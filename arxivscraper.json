@@ -1,0 +1,374 @@
+[
+  {
+    "id": "49c684ee0c05a057",
+    "type": "tab",
+    "label": "Arxiv scraper",
+    "disabled": false,
+    "info": "",
+    "module": null,
+    "version": null
+  },
+  {
+    "id": "e075a26b85ac9aae",
+    "type": "bot-command",
+    "z": "49c684ee0c05a057",
+    "name": "",
+    "order": 0,
+    "options": [
+      {
+        "value": "Scrape arxiv for",
+        "type": "prompt",
+        "required": true
+      },
+      {
+        "value": "search",
+        "type": "string",
+        "required": true
+      }
+    ],
+    "formValue": {
+      "Scrape arxiv for": "",
+      "search": ""
+    },
+    "payload": "",
+    "endpointUrl": "/command-e075a26b85ac9aae",
+    "icon": "",
+    "x": 190,
+    "y": 140,
+    "wires": [
+      [
+        "9fb093c4c6e82fe2",
+        "dea8eac831161b62"
+      ]
+    ],
+    "module": "maya-red-bot-utils",
+    "version": "1.0.1"
+  },
+  {
+    "id": "9fb093c4c6e82fe2",
+    "type": "bot-response",
+    "z": "49c684ee0c05a057",
+    "name": "bot-response",
+    "status": "success",
+    "statusMsg": "Success!",
+    "statusMsgType": "str",
+    "x": 560,
+    "y": 340,
+    "wires": [],
+    "module": "maya-red-bot-utils",
+    "version": "1.0.1"
+  },
+  {
+    "id": "dea8eac831161b62",
+    "type": "function",
+    "z": "49c684ee0c05a057",
+    "name": "",
+    "func": "var url = \"\";\n\nmsg.payload.url = `https://arxiv.org/search/?query=${msg.payload.search.value.split(' ').join('+')}&searchtype=all&abstracts=show&order=-announced_date_first&size=50`;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 420,
+    "y": 140,
+    "wires": [
+      [
+        "8d15b0c836f1b45f"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "id": "8d15b0c836f1b45f",
+    "type": "maya-browser-open",
+    "z": "49c684ee0c05a057",
+    "name": "",
+    "isProfileConfigNode": false,
+    "url": "payload.url",
+    "payloadTypeurl": "msg",
+    "additionalOptions": "{}",
+    "payloadTypeadditionalOptions": "json",
+    "x": 570,
+    "y": 140,
+    "wires": [
+      [
+        "2a28915af4971e51"
+      ]
+    ],
+    "module": "maya-red-browser-automation",
+    "version": "1.7.1"
+  },
+  {
+    "id": "88c86571c5db0f12",
+    "type": "maya-browser-scrape",
+    "z": "49c684ee0c05a057",
+    "name": "",
+    "isProfileConfigNode": false,
+    "query": "{\"papers\":[{\"_xpath\":\"//li[contains(@class,  'arxiv-result')]\",\"title\":\".//p[contains(@class,  'title is-5')]//text()\",\"url\":\".//p[contains(@class,  'list-title')]//a[not(ancestor::span)]/@href\",\"pdf\":\".//p[contains(@class,  'list-title')]//a[(ancestor::span)][1]/@href\"}]}",
+    "payloadTypequery": "json",
+    "timeout": "20000",
+    "payloadTypetimeout": "num",
+    "tabId": "tabs[0].id",
+    "payloadTypetabId": "msg",
+    "x": 810,
+    "y": 40,
+    "wires": [
+      [
+        "a0cfe4b52851ee09",
+        "6d15e8811fdbf06e"
+      ]
+    ],
+    "module": "maya-red-browser-automation",
+    "version": "1.7.1"
+  },
+  {
+    "id": "2a28915af4971e51",
+    "type": "delay",
+    "z": "49c684ee0c05a057",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "2",
+    "timeoutUnits": "seconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "allowrate": false,
+    "x": 660,
+    "y": 80,
+    "wires": [
+      [
+        "88c86571c5db0f12"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "id": "3ab29903b3ab9059",
+    "type": "gsheet-append",
+    "z": "49c684ee0c05a057",
+    "name": "",
+    "isProfileConfigNode": false,
+    "url": "gsheet",
+    "payloadTypeurl": "flow",
+    "range": "range",
+    "payloadTyperange": "flow",
+    "values": "payload",
+    "payloadTypevalues": "msg",
+    "majorDimension": "ROWS",
+    "valueInputOption": "USER_ENTERED",
+    "insertDataOption": "INSERT_ROWS",
+    "responseValueRenderOption": "FORMATTED_VALUE",
+    "responseDateTimeRenderOption": "FORMATTED_STRING",
+    "x": 1440,
+    "y": 40,
+    "wires": [
+      [
+        "cffd5ba0a04616a2"
+      ]
+    ],
+    "module": "maya-red-gdrive",
+    "version": "1.2.1"
+  },
+  {
+    "id": "6d15e8811fdbf06e",
+    "type": "maya-browser-open",
+    "z": "49c684ee0c05a057",
+    "name": "",
+    "isProfileConfigNode": false,
+    "url": "https://docs.google.com/spreadsheets/d/1_b5c3CI1fFOA9B3YOTBKzj5TKzQULigmUFgvpiEkQK0/edit#gid=0",
+    "payloadTypeurl": "str",
+    "additionalOptions": "{}",
+    "payloadTypeadditionalOptions": "json",
+    "x": 990,
+    "y": 120,
+    "wires": [
+      []
+    ],
+    "module": "maya-red-browser-automation",
+    "version": "1.7.1"
+  },
+  {
+    "id": "a0cfe4b52851ee09",
+    "type": "function",
+    "z": "49c684ee0c05a057",
+    "name": "",
+    "func": "var arr = [];\nfor(let o of msg.scrapeResult.papers){\n    arr.push([o[\"title\"],o[\"url\"],o[\"pdf\"]]);\n}\n\nmsg.payload = arr;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 960,
+    "y": 40,
+    "wires": [
+      [
+        "0b02a76fc77a5673"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "id": "0b02a76fc77a5673",
+    "type": "split",
+    "z": "49c684ee0c05a057",
+    "name": "",
+    "splt": "\\n",
+    "spltType": "str",
+    "arraySplt": 1,
+    "arraySpltType": "len",
+    "stream": false,
+    "addname": "",
+    "x": 1090,
+    "y": 40,
+    "wires": [
+      [
+        "067951971c97fefc",
+        "65e537ab7b112371"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "id": "067951971c97fefc",
+    "type": "delay",
+    "z": "49c684ee0c05a057",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "500",
+    "timeoutUnits": "milliseconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "allowrate": false,
+    "x": 1230,
+    "y": 40,
+    "wires": [
+      [
+        "3ab29903b3ab9059"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "id": "65e537ab7b112371",
+    "type": "debug",
+    "z": "49c684ee0c05a057",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1130,
+    "y": 340,
+    "wires": [],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "id": "8799d545d9917a94",
+    "type": "bot-config",
+    "z": "49c684ee0c05a057",
+    "name": "",
+    "rules": [
+      {
+        "t": "set",
+        "p": "gsheet",
+        "pt": "flow",
+        "varName": "Gsheet URL",
+        "varDesc": "Link to the google spreadsheet",
+        "reqd": true,
+        "exportVar": false,
+        "to": "https://docs.google.com/spreadsheets/d/1_b5c3CI1fFOA9B3YOTBKzj5TKzQULigmUFgvpiEkQK0/edit#gid=0",
+        "tot": "str"
+      },
+      {
+        "t": "set",
+        "p": "range",
+        "pt": "flow",
+        "varName": "Range",
+        "varDesc": "Gsheet Cell Range e.g. Sheet1!A1:C1",
+        "reqd": true,
+        "exportVar": false,
+        "to": "Sheet1",
+        "tot": "str"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 180,
+    "y": 220,
+    "wires": [],
+    "module": "maya-red-bot-utils",
+    "version": "1.0.1"
+  },
+  {
+    "id": "cffd5ba0a04616a2",
+    "type": "debug",
+    "z": "49c684ee0c05a057",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1490,
+    "y": 180,
+    "wires": [],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "id": "0241d19d3502fcb1",
+    "type": "bot-info",
+    "z": "49c684ee0c05a057",
+    "name": "Learn More",
+    "title": "Arxiv Scraper - search for papers & gather PDF details",
+    "description": "# About\n\nSearches for a term on arxiv.com and scrapes the title, url and pdf link of the first 50 results.\n\n### Configuration\n\nConfigure the Google sheet URL and column range (optional) in the <Configure 2 Variables Here> node.",
+    "created": "February 15, 2022",
+    "timestamp": 1644922453715,
+    "compatibility": [
+      {
+        "label": "MacOS",
+        "value": "macos"
+      },
+      {
+        "label": "Windows",
+        "value": "windows"
+      },
+      {
+        "label": "Linux",
+        "value": "linux"
+      }
+    ],
+    "developer": "sibesh@mayahq.com",
+    "previewMedia": "https://www.reddit.com/r/AutomateYourself/comments/soe36o/tiam_made_this_to_let_me_quickly_gather_paper/",
+    "version": "1.0.1",
+    "x": 140,
+    "y": 300,
+    "wires": [],
+    "module": "maya-red-bot-utils"
+  }
+]
