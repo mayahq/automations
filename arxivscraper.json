@@ -181,8 +181,8 @@
     "z": "49c684ee0c05a057",
     "name": "",
     "isProfileConfigNode": false,
-    "url": "https://docs.google.com/spreadsheets/d/1_b5c3CI1fFOA9B3YOTBKzj5TKzQULigmUFgvpiEkQK0/edit#gid=0",
-    "payloadTypeurl": "str",
+    "url": "gsheet",
+    "payloadTypeurl": "flow",
     "additionalOptions": "{}",
     "payloadTypeadditionalOptions": "json",
     "x": 990,
@@ -306,7 +306,7 @@
         "varDesc": "Gsheet Cell Range e.g. Sheet1!A1:C1",
         "reqd": true,
         "exportVar": false,
-        "to": "Sheet1",
+        "to": "Sheet1!A1:C1",
         "tot": "str"
       }
     ],
