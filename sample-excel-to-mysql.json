@@ -1,0 +1,242 @@
+[
+  {
+    "id": "3fe0b6981d9acb3d",
+    "type": "sheet-to-json",
+    "z": "c85a69693fe2e114",
+    "name": "",
+    "raw": "false",
+    "range": "",
+    "header": "default",
+    "blankrows": false,
+    "x": 270,
+    "y": 1700,
+    "wires": [
+      [
+        "d604439421fb1942"
+      ]
+    ],
+    "module": "node-red-contrib-spreadsheet-in",
+    "version": "0.6.0"
+  },
+  {
+    "id": "e35ec98da78bff27",
+    "type": "sheet",
+    "z": "c85a69693fe2e114",
+    "name": "",
+    "sheetName": "Sheet1",
+    "x": 630,
+    "y": 1640,
+    "wires": [
+      [
+        "3fe0b6981d9acb3d"
+      ]
+    ],
+    "module": "node-red-contrib-spreadsheet-in",
+    "version": "0.6.0"
+  },
+  {
+    "id": "b2b388cf5ce64905",
+    "type": "book",
+    "z": "c85a69693fe2e114",
+    "name": "",
+    "raw": false,
+    "x": 450,
+    "y": 1640,
+    "wires": [
+      [
+        "e35ec98da78bff27"
+      ]
+    ],
+    "module": "node-red-contrib-spreadsheet-in",
+    "version": "0.6.0"
+  },
+  {
+    "id": "5d040d431695e0fa",
+    "type": "file in",
+    "z": "c85a69693fe2e114",
+    "name": "Sample Excel",
+    "filename": "/Users/maya/Desktop/Sample.xlsx",
+    "format": "",
+    "chunk": false,
+    "sendError": false,
+    "encoding": "none",
+    "allProps": false,
+    "x": 270,
+    "y": 1640,
+    "wires": [
+      [
+        "b2b388cf5ce64905"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "id": "d604439421fb1942",
+    "type": "function",
+    "z": "c85a69693fe2e114",
+    "name": "Query Builder",
+    "func": "let rawArray = msg.payload;\n\nlet updateArray = rawArray.map(obj => {\n    return {\n        ...obj,\n        insertQuery: 'INSERT INTO `fleetx`.`sim` (`sim_number`, `mobile_number`, `received_date`, `sim_provider`, `status`, `sms_gateway`, `sim_supplier`) VALUES (\\''+obj.SIM_NO+'\\',\\''+obj.MOB_NO+'\\',\\''+new Date().toISOString().slice(0, 10)+'\\',\\'VODAFONE\\', \\'ACTIVE\\', \\'VODA_RESTRICT_1\\', \\'VODAFONE\\');'\n    }\n})\n\nmsg.payload = updateArray;\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 500,
+    "y": 1700,
+    "wires": [
+      [
+        "77f1d685cab88b48",
+        "2e6bfdd2e29b67ba",
+        "3d30c897674e8770"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "id": "77f1d685cab88b48",
+    "type": "split",
+    "z": "c85a69693fe2e114",
+    "name": "",
+    "splt": "",
+    "spltType": "str",
+    "arraySplt": 1,
+    "arraySpltType": "len",
+    "stream": false,
+    "addname": "payload",
+    "x": 550,
+    "y": 1760,
+    "wires": [
+      [
+        "72afb5952e254704"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "id": "72afb5952e254704",
+    "type": "delay",
+    "z": "c85a69693fe2e114",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "200",
+    "timeoutUnits": "milliseconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "allowrate": false,
+    "x": 630,
+    "y": 1840,
+    "wires": [
+      [
+        "b3198236c8993560"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "id": "c0128903a67031f7",
+    "type": "bot-command",
+    "z": "c85a69693fe2e114",
+    "name": "",
+    "order": 0,
+    "options": [
+      {
+        "value": "Update Sim Tables From Excel",
+        "type": "prompt",
+        "required": true
+      }
+    ],
+    "formValue": {
+      "Update Sim Tables From Excel": ""
+    },
+    "payload": "",
+    "endpointUrl": "/command-64f552510a33196a",
+    "icon": "",
+    "x": 190,
+    "y": 1540,
+    "wires": [
+      [
+        "5d040d431695e0fa"
+      ]
+    ],
+    "module": "maya-red-bot-utils",
+    "version": "1.0.1"
+  },
+  {
+    "id": "3d30c897674e8770",
+    "type": "bot-dash-card",
+    "z": "c85a69693fe2e114",
+    "name": "bot-dash-card",
+    "group": "46a398e5f2986895",
+    "header": "",
+    "headerType": "str",
+    "x": 820,
+    "y": 1700,
+    "wires": [],
+    "module": "maya-red-bot-utils",
+    "version": "1.0.1"
+  },
+  {
+    "id": "2e6bfdd2e29b67ba",
+    "type": "ui_text",
+    "z": "c85a69693fe2e114",
+    "group": "46a398e5f2986895",
+    "order": 0,
+    "width": 0,
+    "height": 0,
+    "name": "",
+    "label": "{{msg.payload.length}} records being inserted",
+    "format": "",
+    "layout": "row-spread",
+    "className": "",
+    "x": 730,
+    "y": 1760,
+    "wires": [],
+    "module": "@mayahq/maya-red-dashboard",
+    "version": "1.0.2"
+  },
+  {
+    "id": "b3198236c8993560",
+    "type": "mysql",
+    "z": "c85a69693fe2e114",
+    "name": "",
+    "x": 640,
+    "y": 1900,
+    "wires": [
+      []
+    ],
+    "module": "node-red-node-mysql",
+    "version": "1.0.0"
+  },
+  {
+    "id": "46a398e5f2986895",
+    "type": "ui_group",
+    "name": "Response",
+    "tab": "7e7629ced516e754",
+    "order": 1,
+    "disp": true,
+    "width": "6",
+    "collapse": false,
+    "className": "",
+    "module": "@mayahq/maya-red-dashboard",
+    "version": "1.0.2"
+  },
+  {
+    "id": "7e7629ced516e754",
+    "type": "ui_tab",
+    "name": "Result",
+    "icon": "dashboard",
+    "disabled": false,
+    "hidden": false,
+    "module": "@mayahq/maya-red-dashboard",
+    "version": "1.0.2"
+  }
+]
