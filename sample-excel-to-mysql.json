@@ -217,6 +217,41 @@
     "version": "1.0.0"
   },
   {
+    "id": "084bd1d0365efa98",
+    "type": "bot-info",
+    "z": "c85a69693fe2e114",
+    "name": "Excel to CSV",
+    "title": "Excel to CSV",
+    "description": "This simple automation takes a sample Excel file and converts it to SQL insert queries",
+    "created": "February 17, 2022",
+    "timestamp": 1645085603623,
+    "compatibility": [
+      {
+        "label": "MacOS",
+        "value": "macos"
+      },
+      {
+        "label": "Windows",
+        "value": "windows"
+      },
+      {
+        "label": "Linux",
+        "value": "linux"
+      },
+      {
+        "label": "Maya Cloud",
+        "value": "cloud"
+      }
+    ],
+    "developer": "shubham@mayahq.com",
+    "previewMedia": "",
+    "version": "1.0.1",
+    "x": 480,
+    "y": 1540,
+    "wires": [],
+    "module": "maya-red-bot-utils"
+  },
+  {
     "id": "46a398e5f2986895",
     "type": "ui_group",
     "name": "Response",
