@@ -377,8 +377,8 @@
     "developer": "sibesh@mayahq.com",
     "previewMedia": "https://www.loom.com/share/82e30578d576489485122fbf06ad3e36",
     "version": "1.0.1",
-    "x": 200,
-    "y": 220,
+    "x": 210,
+    "y": 240,
     "wires": [],
     "module": "maya-red-bot-utils"
   },
