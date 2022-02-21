@@ -1,5 +1,32 @@
 [
   {
+    "id": "d462bb3c4261b6fa",
+    "type": "tab",
+    "label": "Commands",
+    "disabled": false,
+    "info": "",
+    "module": null,
+    "version": null
+  },
+  {
+    "id": "54373085875a7fb0",
+    "type": "tab",
+    "label": "Repeating",
+    "disabled": false,
+    "info": "",
+    "module": null,
+    "version": null
+  },
+  {
+    "id": "9d418f7e418f8895",
+    "type": "tab",
+    "label": "Sample Usage",
+    "disabled": false,
+    "info": "",
+    "module": null,
+    "version": null
+  },
+  {
     "id": "45bf4e6f6196249a",
     "type": "subflow",
     "name": "Fetch Trending Repos",
@@ -108,13 +135,71 @@
     "version": "2.0.6"
   },
   {
-    "id": "9d418f7e418f8895",
-    "type": "tab",
-    "label": "Sample Usage",
-    "disabled": false,
-    "info": "",
+    "id": "d43456c30bbde1ef",
+    "type": "custom-search",
+    "z": "d462bb3c4261b6fa",
+    "name": "Github Trending Daily Repo Search",
+    "payload": "",
+    "endpointUrl": "/search-d43456c30bbde1ef",
+    "x": 220,
+    "y": 640,
+    "wires": [
+      [
+        "e8a2086cf02e814d"
+      ]
+    ],
+    "module": "maya-red-bot-utils",
+    "version": "1.0.1"
+  },
+  {
+    "id": "e8a2086cf02e814d",
+    "type": "subflow:45bf4e6f6196249a",
+    "z": "d462bb3c4261b6fa",
+    "name": "Fetch Daily",
+    "env": [],
+    "x": 470,
+    "y": 560,
+    "wires": [
+      [
+        "6b8dfa8ea38be17c"
+      ]
+    ],
     "module": null,
     "version": null
+  },
+  {
+    "id": "66449d8ed415a870",
+    "type": "custom-search-response",
+    "z": "d462bb3c4261b6fa",
+    "name": "custom-search-response",
+    "statusCode": "",
+    "headers": {},
+    "x": 750,
+    "y": 680,
+    "wires": [],
+    "module": "maya-red-bot-utils",
+    "version": "1.0.1"
+  },
+  {
+    "id": "6b8dfa8ea38be17c",
+    "type": "function",
+    "z": "d462bb3c4261b6fa",
+    "name": "",
+    "func": "var results = []\n\nfunction truncateString(str, num) {\n  if (str.length > num) {\n    return str.slice(0, num) + \"...\";\n  } else {\n    return str;\n  }\n}\n\nmsg.payload.forEach(item=>{\n   results.push({\"value\": item.repositoryName,\"meta\":{\"subtext\":truncateString(item.description, 40) + \" | up \" + item.starsSince + \" stars | total stars:\" + item.totalStars + \" |\", url : item.url}}) \n})\n\n\nmsg.payload = results\n\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 640,
+    "y": 620,
+    "wires": [
+      [
+        "66449d8ed415a870"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6"
   },
   {
     "id": "a4d47ce0aea7f6c0",
@@ -188,6 +273,85 @@
     "version": null
   },
   {
+    "id": "b8a0763262e04f14",
+    "type": "bot-scheduler",
+    "z": "54373085875a7fb0",
+    "name": "",
+    "outputField": "payload",
+    "endpointUrl": "/scheduler-b8a0763262e04f14",
+    "timeZone": "",
+    "wasDeployed": true,
+    "commandResponseMsgOutput": "output1",
+    "outputs": 1,
+    "changedAt": "2022-02-21T19:52:13.593Z",
+    "options": [
+      {
+        "name": "1-b8a0763262e04f14",
+        "topic": "Fetch Daily Python Repos",
+        "payloadType": "date",
+        "payload": "",
+        "expressionType": "cron",
+        "expression": "0 0 0 1/1 * ? *",
+        "location": "",
+        "offset": "0",
+        "solarType": "all",
+        "solarEvents": "sunrise,sunset",
+        "autostart": false,
+        "isStatic": true
+      }
+    ],
+    "x": 190,
+    "y": 160,
+    "wires": [
+      [
+        "5b2d6d1484e8713a"
+      ]
+    ],
+    "module": "maya-red-bot-utils",
+    "version": "1.0.1"
+  },
+  {
+    "id": "5b2d6d1484e8713a",
+    "type": "subflow:45bf4e6f6196249a",
+    "z": "54373085875a7fb0",
+    "name": "Fetch Trending Python Repos Daily",
+    "env": [
+      {
+        "name": "language",
+        "value": "python",
+        "type": "str"
+      }
+    ],
+    "x": 480,
+    "y": 160,
+    "wires": [
+      [
+        "df19010a87ac6121"
+      ]
+    ],
+    "module": null,
+    "version": null
+  },
+  {
+    "id": "df19010a87ac6121",
+    "type": "debug",
+    "z": "54373085875a7fb0",
+    "name": "--> To Storage",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 720,
+    "y": 220,
+    "wires": [],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
     "id": "ddc758020848677e",
     "type": "bot-info",
     "z": "9d418f7e418f8895",
@@ -217,5 +381,226 @@
     "y": 220,
     "wires": [],
     "module": "maya-red-bot-utils"
+  },
+  {
+    "id": "6b9e6ac4b590e66c",
+    "type": "bot-command",
+    "z": "d462bb3c4261b6fa",
+    "name": "",
+    "order": 0,
+    "options": [
+      {
+        "value": "Search for",
+        "type": "prompt",
+        "required": true
+      },
+      {
+        "value": "query",
+        "type": "custom",
+        "required": false,
+        "endpoint": "/search-d43456c30bbde1ef",
+        "customNode": "d43456c30bbde1ef"
+      },
+      {
+        "value": "in daily trending repositories",
+        "type": "prompt",
+        "required": false
+      }
+    ],
+    "formValue": {
+      "Search for": "",
+      "query": "",
+      "in daily trending repositories": ""
+    },
+    "payload": "",
+    "endpointUrl": "/command-d2e1eedb36ef1c2b",
+    "icon": "https://github.com/favicon.ico",
+    "x": 260,
+    "y": 100,
+    "wires": [
+      [
+        "2e729f60c771bbae",
+        "24e4c506f208f55f"
+      ]
+    ],
+    "module": "maya-red-bot-utils",
+    "version": "1.0.1"
+  },
+  {
+    "id": "2e729f60c771bbae",
+    "type": "bot-response",
+    "z": "d462bb3c4261b6fa",
+    "name": "bot-response",
+    "status": "success",
+    "statusMsg": "Success!",
+    "statusMsgType": "str",
+    "x": 750,
+    "y": 140,
+    "wires": [],
+    "module": "maya-red-bot-utils",
+    "version": "1.0.1"
+  },
+  {
+    "id": "24e4c506f208f55f",
+    "type": "desktop-system-open",
+    "z": "d462bb3c4261b6fa",
+    "name": "",
+    "isProfileConfigNode": false,
+    "target": "payload.query.meta.url",
+    "payloadTypetarget": "msg",
+    "x": 550,
+    "y": 180,
+    "wires": [
+      []
+    ],
+    "module": "maya-red-system-utils",
+    "version": "1.2.1"
+  },
+  {
+    "id": "459ed429b772e4aa",
+    "type": "bot-command",
+    "z": "d462bb3c4261b6fa",
+    "name": "",
+    "order": 0,
+    "options": [
+      {
+        "value": "Search for",
+        "type": "prompt",
+        "required": true
+      },
+      {
+        "value": "query",
+        "type": "custom",
+        "required": false,
+        "endpoint": "/search-d43456c30bbde1ef",
+        "customNode": "d43456c30bbde1ef"
+      },
+      {
+        "value": "in weekly trending repositories",
+        "type": "prompt",
+        "required": false
+      }
+    ],
+    "formValue": {
+      "Search for": "",
+      "query": "",
+      "in weekly trending repositories": ""
+    },
+    "payload": "",
+    "endpointUrl": "/command-426dcf76b8bc1883",
+    "icon": "https://github.com/favicon.ico",
+    "x": 270,
+    "y": 300,
+    "wires": [
+      [
+        "4f068d256f6e469d",
+        "71842ba8ad641587"
+      ]
+    ],
+    "module": "maya-red-bot-utils",
+    "version": "1.0.1"
+  },
+  {
+    "id": "4f068d256f6e469d",
+    "type": "bot-response",
+    "z": "d462bb3c4261b6fa",
+    "name": "bot-response",
+    "status": "success",
+    "statusMsg": "Success!",
+    "statusMsgType": "str",
+    "x": 770,
+    "y": 340,
+    "wires": [],
+    "module": "maya-red-bot-utils",
+    "version": "1.0.1"
+  },
+  {
+    "id": "71842ba8ad641587",
+    "type": "desktop-system-open",
+    "z": "d462bb3c4261b6fa",
+    "name": "",
+    "isProfileConfigNode": false,
+    "target": "payload.query.meta.url",
+    "payloadTypetarget": "msg",
+    "x": 570,
+    "y": 380,
+    "wires": [
+      []
+    ],
+    "module": "maya-red-system-utils",
+    "version": "1.2.1"
+  },
+  {
+    "id": "b575bc9e934216ba",
+    "type": "custom-search",
+    "z": "d462bb3c4261b6fa",
+    "name": "Github Trending Weekly Repo Search",
+    "payload": "",
+    "endpointUrl": "/search-b575bc9e934216ba",
+    "x": 260,
+    "y": 820,
+    "wires": [
+      [
+        "fbc1afa6b2cfef0e"
+      ]
+    ],
+    "module": "maya-red-bot-utils",
+    "version": "1.0.1"
+  },
+  {
+    "id": "fbc1afa6b2cfef0e",
+    "type": "subflow:45bf4e6f6196249a",
+    "z": "d462bb3c4261b6fa",
+    "name": "Fetch Weekly",
+    "env": [
+      {
+        "name": "since",
+        "value": "weekly",
+        "type": "str"
+      }
+    ],
+    "x": 520,
+    "y": 740,
+    "wires": [
+      [
+        "0c1d3ed43386f2d7"
+      ]
+    ],
+    "module": null,
+    "version": null
+  },
+  {
+    "id": "ec591f937f57f8e8",
+    "type": "custom-search-response",
+    "z": "d462bb3c4261b6fa",
+    "name": "custom-search-response",
+    "statusCode": "",
+    "headers": {},
+    "x": 790,
+    "y": 860,
+    "wires": [],
+    "module": "maya-red-bot-utils",
+    "version": "1.0.1"
+  },
+  {
+    "id": "0c1d3ed43386f2d7",
+    "type": "function",
+    "z": "d462bb3c4261b6fa",
+    "name": "",
+    "func": "var results = []\n\nfunction truncateString(str, num) {\n  if (str.length > num) {\n    return str.slice(0, num) + \"...\";\n  } else {\n    return str;\n  }\n}\n\nmsg.payload.forEach(item=>{\n   results.push({\"value\": item.repositoryName,\"meta\":{\"subtext\":truncateString(item.description, 40) + \" | up \" + item.starsSince + \" stars | total stars:\" + item.totalStars + \" |\", url : item.url}}) \n})\n\n\nmsg.payload = results\n\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 680,
+    "y": 800,
+    "wires": [
+      [
+        "ec591f937f57f8e8"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6"
   }
 ]
