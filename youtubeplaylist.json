@@ -2,7 +2,7 @@
   {
     "id": "60ce3703a47613e5",
     "type": "tab",
-    "label": "Flow 1",
+    "label": "Youtube Playlist Save",
     "disabled": false,
     "info": "",
     "module": null,
@@ -14,10 +14,10 @@
     "z": "60ce3703a47613e5",
     "name": "",
     "isProfileConfigNode": false,
-    "query": "{\"url\":\"https://www.youtube.com/watch?v=ROdk1Igapis\"}",
-    "payloadTypequery": "json",
-    "x": 140,
-    "y": 140,
+    "query": "json",
+    "payloadTypequery": "msg",
+    "x": 340,
+    "y": 260,
     "wires": [
       [
         "6a709298855ee735"
@@ -46,7 +46,7 @@
     "checkall": "true",
     "repair": false,
     "outputs": 2,
-    "x": 290,
+    "x": 310,
     "y": 160,
     "wires": [
       [
@@ -65,8 +65,8 @@
     "z": "60ce3703a47613e5",
     "name": "",
     "isProfileConfigNode": false,
-    "url": "https://www.youtube.com/watch?v=ROdk1Igapis",
-    "payloadTypeurl": "str",
+    "url": "url",
+    "payloadTypeurl": "msg",
     "additionalOptions": "{}",
     "payloadTypeadditionalOptions": "json",
     "x": 410,
@@ -102,7 +102,7 @@
     "y": 60,
     "wires": [
       [
-        "7e95e2456c40db40"
+        "34abda6274bc8980"
       ]
     ],
     "module": "node-red",
@@ -127,8 +127,8 @@
     "payloadTypetabId": "msg",
     "index": "0",
     "payloadTypeindex": "num",
-    "x": 520,
-    "y": 200,
+    "x": 600,
+    "y": 220,
     "wires": [
       [
         "c8278be91bc97756"
@@ -148,16 +148,16 @@
     "clickType": "click",
     "highlightDuration": "1000",
     "payloadTypehighlightDuration": "num",
-    "selector": "/html/body/ytd-app/ytd-popup-container/tp-yt-paper-dialog/ytd-add-to-playlist-renderer/div[2]/ytd-playlist-add-to-option-renderer[2]/tp-yt-paper-checkbox/div[1]",
-    "payloadTypeselector": "str",
+    "selector": "playlist",
+    "payloadTypeselector": "flow",
     "timeout": "2000",
     "payloadTypetimeout": "num",
     "tabId": "tabs[0].id",
     "payloadTypetabId": "msg",
     "index": "0",
     "payloadTypeindex": "num",
-    "x": 790,
-    "y": 160,
+    "x": 770,
+    "y": 60,
     "wires": [
       []
     ],
@@ -185,6 +185,122 @@
     "wires": [
       [
         "26f3de72a8eb8e4b"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "id": "44995119c321c48b",
+    "type": "bot-info",
+    "z": "60ce3703a47613e5",
+    "name": "",
+    "title": "Youtube Save to Playlist",
+    "description": "This workflow let's you configure automate the process of adding a youtube video to a playlist. you'll need to configure the youtube video URL + checkbox xpath of the playlist you're interested in. Current default is Favorites playlist. ",
+    "created": "April 1, 2022",
+    "timestamp": 1648786967289,
+    "compatibility": [
+      {
+        "label": "MacOS",
+        "value": "macos"
+      },
+      {
+        "label": "Windows",
+        "value": "windows"
+      },
+      {
+        "label": "Linux",
+        "value": "linux"
+      }
+    ],
+    "developer": "botdoggy42@gmail.com",
+    "previewMedia": "",
+    "version": "1.0.1",
+    "x": 200,
+    "y": 320,
+    "wires": [],
+    "module": "maya-red-bot-utils"
+  },
+  {
+    "id": "69366ebfa57e4541",
+    "type": "bot-config",
+    "z": "60ce3703a47613e5",
+    "name": "",
+    "rules": [
+      {
+        "t": "set",
+        "p": "url",
+        "pt": "flow",
+        "varName": "youtube url",
+        "varDesc": "add video url here",
+        "reqd": true,
+        "exportVar": false,
+        "to": "",
+        "tot": "str"
+      },
+      {
+        "t": "set",
+        "p": "playlist",
+        "pt": "flow",
+        "varName": "playlist xpath",
+        "varDesc": "select the checkbox url of the playlist you need",
+        "reqd": true,
+        "exportVar": false,
+        "to": "",
+        "tot": "str"
+      }
+    ],
+    "x": 190,
+    "y": 440,
+    "wires": [],
+    "module": "maya-red-bot-utils",
+    "version": "1.0.1"
+  },
+  {
+    "id": "34abda6274bc8980",
+    "type": "change",
+    "z": "60ce3703a47613e5",
+    "name": "",
+    "rules": [
+      {
+        "t": "set",
+        "p": "url",
+        "pt": "msg",
+        "to": "url",
+        "tot": "flow"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 130,
+    "y": 140,
+    "wires": [
+      [
+        "a892beb362a041cb"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "id": "a892beb362a041cb",
+    "type": "function",
+    "z": "60ce3703a47613e5",
+    "name": "",
+    "func": "msg.json = {\n    url : msg.url\n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 140,
+    "y": 220,
+    "wires": [
+      [
+        "7e95e2456c40db40"
       ]
     ],
     "module": "node-red",
