@@ -1,0 +1,341 @@
+[
+  {
+    "type": "tab",
+    "id": "44e7ed736efc330a",
+    "disabled": false,
+    "info": "",
+    "label": "Flow 1",
+    "_def": {
+      "defaults": {
+        "label": {
+          "value": ""
+        },
+        "disabled": {
+          "value": false
+        },
+        "info": {
+          "value": ""
+        }
+      }
+    },
+    "in": [],
+    "out": [],
+    "changed": false,
+    "module": null,
+    "version": null
+  },
+  {
+    "valid": true,
+    "id": "7f5fb52f986aaea1",
+    "type": "inject",
+    "z": "44e7ed736efc330a",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 97,
+    "y": 136,
+    "wires": [
+      [
+        "89c6cd3dd7d2144d"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "valid": true,
+    "id": "89c6cd3dd7d2144d",
+    "type": "maya-browser-open",
+    "z": "44e7ed736efc330a",
+    "name": "Open Swiggy",
+    "isProfileConfigNode": false,
+    "url": "https://www.swiggy.com/restaurants/slay-coffee-hoysala-nagar-new-tippasandra-bangalore-109348?sld=false",
+    "payloadTypeurl": "str",
+    "additionalOptions": "{}",
+    "payloadTypeadditionalOptions": "json",
+    "x": 238,
+    "y": 230,
+    "wires": [
+      [
+        "ca62d4eb40151738",
+        "953a3f0e283aed7a"
+      ]
+    ],
+    "module": "maya-red-browser-automation",
+    "version": "1.7.1"
+  },
+  {
+    "valid": true,
+    "id": "ca62d4eb40151738",
+    "type": "debug",
+    "z": "44e7ed736efc330a",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 661,
+    "y": 248,
+    "wires": [],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "valid": true,
+    "id": "953a3f0e283aed7a",
+    "type": "maya-browser-click",
+    "z": "44e7ed736efc330a",
+    "name": "Click Add",
+    "isProfileConfigNode": false,
+    "delay": "100",
+    "payloadTypedelay": "num",
+    "clickType": "click",
+    "highlightDuration": "1000",
+    "payloadTypehighlightDuration": "num",
+    "selector": "//div[@class=\"styles_itemAddButton__zJ7-R\"]//div[contains(text(), \"ADD\")]",
+    "payloadTypeselector": "str",
+    "timeout": "20000",
+    "payloadTypetimeout": "num",
+    "tabId": "tabs[0].id",
+    "payloadTypetabId": "msg",
+    "index": "0",
+    "payloadTypeindex": "num",
+    "x": 230,
+    "y": 280,
+    "wires": [
+      [
+        "e445b2cc6aaba663"
+      ]
+    ],
+    "module": "maya-red-browser-automation",
+    "version": "1.7.1"
+  },
+  {
+    "valid": true,
+    "id": "e445b2cc6aaba663",
+    "type": "maya-browser-click",
+    "z": "44e7ed736efc330a",
+    "name": "Select Regular Size",
+    "isProfileConfigNode": false,
+    "delay": "100",
+    "payloadTypedelay": "num",
+    "clickType": "click",
+    "highlightDuration": "1000",
+    "payloadTypehighlightDuration": "num",
+    "selector": "//input[contains(@name, \"Regular\")]",
+    "payloadTypeselector": "str",
+    "timeout": "5000",
+    "payloadTypetimeout": "num",
+    "tabId": "tabs[0].id",
+    "payloadTypetabId": "msg",
+    "index": "0",
+    "payloadTypeindex": "num",
+    "x": 230,
+    "y": 340,
+    "wires": [
+      [
+        "af7727f6e83bd3c7"
+      ]
+    ],
+    "module": "maya-red-browser-automation",
+    "version": "1.7.1"
+  },
+  {
+    "valid": true,
+    "id": "af7727f6e83bd3c7",
+    "type": "maya-browser-click",
+    "z": "44e7ed736efc330a",
+    "name": "Select No Cutlery",
+    "isProfileConfigNode": false,
+    "delay": "100",
+    "payloadTypedelay": "num",
+    "clickType": "click",
+    "highlightDuration": "1000",
+    "payloadTypehighlightDuration": "num",
+    "selector": "//input[contains(@name, \"No Cutlery\")]",
+    "payloadTypeselector": "str",
+    "timeout": "5000",
+    "payloadTypetimeout": "num",
+    "tabId": "tabs[0].id",
+    "payloadTypetabId": "msg",
+    "index": "0",
+    "payloadTypeindex": "num",
+    "x": 230,
+    "y": 400,
+    "wires": [
+      [
+        "d9a2afaa2a552909"
+      ]
+    ],
+    "module": "maya-red-browser-automation",
+    "version": "1.7.1"
+  },
+  {
+    "valid": true,
+    "id": "d9a2afaa2a552909",
+    "type": "maya-browser-click",
+    "z": "44e7ed736efc330a",
+    "name": "Confirm Add",
+    "isProfileConfigNode": false,
+    "delay": "100",
+    "payloadTypedelay": "num",
+    "clickType": "click",
+    "highlightDuration": "1000",
+    "payloadTypehighlightDuration": "num",
+    "selector": "//span[contains(text(), \"Add Item\")]/..",
+    "payloadTypeselector": "str",
+    "timeout": "2000",
+    "payloadTypetimeout": "num",
+    "tabId": "tabs[0].id",
+    "payloadTypetabId": "msg",
+    "index": "0",
+    "payloadTypeindex": "num",
+    "x": 230,
+    "y": 459,
+    "wires": [
+      [
+        "1d69161fa3d569fe"
+      ]
+    ],
+    "module": "maya-red-browser-automation",
+    "version": "1.7.1"
+  },
+  {
+    "valid": true,
+    "id": "1d69161fa3d569fe",
+    "type": "maya-browser-click",
+    "z": "44e7ed736efc330a",
+    "name": "Click Checkout",
+    "isProfileConfigNode": false,
+    "delay": "100",
+    "payloadTypedelay": "num",
+    "clickType": "click",
+    "highlightDuration": "1000",
+    "payloadTypehighlightDuration": "num",
+    "selector": "//button[contains(text(), \"Checkout\")]",
+    "payloadTypeselector": "str",
+    "timeout": "2000",
+    "payloadTypetimeout": "num",
+    "tabId": "tabs[0].id",
+    "payloadTypetabId": "msg",
+    "index": "0",
+    "payloadTypeindex": "num",
+    "x": 230,
+    "y": 520,
+    "wires": [
+      [
+        "64f773a2af3c2bd6"
+      ]
+    ],
+    "module": "maya-red-browser-automation",
+    "version": "1.7.1"
+  },
+  {
+    "valid": true,
+    "id": "64f773a2af3c2bd6",
+    "type": "maya-browser-click",
+    "z": "44e7ed736efc330a",
+    "name": "Select Address",
+    "isProfileConfigNode": false,
+    "delay": "100",
+    "payloadTypedelay": "num",
+    "clickType": "click",
+    "highlightDuration": "1000",
+    "payloadTypehighlightDuration": "num",
+    "selector": "//div[contains(text(), \"MayaHQ\")]/..//div[contains(text(),\"Deliver Here\")]",
+    "payloadTypeselector": "str",
+    "timeout": "20000",
+    "payloadTypetimeout": "num",
+    "tabId": "tabs[0].id",
+    "payloadTypetabId": "msg",
+    "index": "0",
+    "payloadTypeindex": "num",
+    "x": 240,
+    "y": 600,
+    "wires": [
+      [
+        "659268fd218ffa99"
+      ]
+    ],
+    "module": "maya-red-browser-automation",
+    "version": "1.7.1"
+  },
+  {
+    "valid": true,
+    "id": "659268fd218ffa99",
+    "type": "maya-browser-click",
+    "z": "44e7ed736efc330a",
+    "name": "Pay using Swiggy Money",
+    "isProfileConfigNode": false,
+    "delay": "100",
+    "payloadTypedelay": "num",
+    "clickType": "click",
+    "highlightDuration": "1000",
+    "payloadTypehighlightDuration": "num",
+    "selector": "//div[contains(text(),\"Swiggy Money\")]/../../..//div[contains(text(),\"Pay\")]",
+    "payloadTypeselector": "str",
+    "timeout": "2000",
+    "payloadTypetimeout": "num",
+    "tabId": "tabs[0].id",
+    "payloadTypetabId": "msg",
+    "index": "0",
+    "payloadTypeindex": "num",
+    "x": 278,
+    "y": 654,
+    "wires": [
+      []
+    ],
+    "module": "maya-red-browser-automation",
+    "version": "1.7.1"
+  },
+  {
+    "valid": true,
+    "id": "e587182e985b8fb4",
+    "type": "bot-info",
+    "z": "44e7ed736efc330a",
+    "name": "Details",
+    "title": "Coffee Ordering Bot",
+    "description": "Order Coffee from SLAY coffee in swiggy.\nTo Configure : \n1. Which coffee to select (configure xpath in \"Click Add\" node)\n2. Configure Address (set by default to MayaHQ in \"Select Address\")\n3. Make sure Swiggy Money is configured ",
+    "created": "July 6, 2022",
+    "timestamp": 1657104462367,
+    "compatibility": [
+      {
+        "label": "MacOS",
+        "value": "macos"
+      },
+      {
+        "label": "Windows",
+        "value": "windows"
+      },
+      {
+        "label": "Linux",
+        "value": "linux"
+      }
+    ],
+    "developer": "sibesh@mayalabs.io",
+    "previewMedia": "",
+    "version": "1.0.1",
+    "x": 709,
+    "y": 498,
+    "wires": [],
+    "module": "maya-red-bot-utils"
+  }
+]
