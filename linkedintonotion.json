@@ -1,0 +1,758 @@
+[
+  {
+    "valid": true,
+    "id": "66e44c340181d7df",
+    "type": "inject",
+    "z": "7a0a571c90561237",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "pageIdx",
+        "v": "1",
+        "vt": "num"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payloadType": "date",
+    "x": 410,
+    "y": -135,
+    "wires": [
+      [
+        "4f90beb6eb22b989"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "valid": true,
+    "id": "4f90beb6eb22b989",
+    "type": "maya-browser-find-tab",
+    "z": "7a0a571c90561237",
+    "name": "",
+    "isProfileConfigNode": false,
+    "query": "{\"active\":true}",
+    "payloadTypequery": "json",
+    "x": 380,
+    "y": -30,
+    "wires": [
+      [
+        "5ad69b8864907484"
+      ]
+    ],
+    "module": "maya-red-browser-automation",
+    "version": "1.7.1"
+  },
+  {
+    "valid": true,
+    "id": "5ad69b8864907484",
+    "type": "maya-browser-scrape",
+    "z": "7a0a571c90561237",
+    "name": "",
+    "isProfileConfigNode": false,
+    "query": "[{\"_xpath\":\"//li[contains(@class, 'result-container')]\",\"link\":\".//span[contains(@class, 'title-text')]//a/@href\",\"name\":\".//span[contains(@class, 'title-text')]/a//span[@dir='ltr']//span[not(contains(@class, 'visually-hidden'))]\"}]",
+    "payloadTypequery": "json",
+    "timeout": "2000",
+    "payloadTypetimeout": "num",
+    "tabId": "tabs[0].id",
+    "payloadTypetabId": "msg",
+    "x": 385,
+    "y": 60,
+    "wires": [
+      [
+        "8729e8185f758f33"
+      ]
+    ],
+    "module": "maya-red-browser-automation",
+    "version": "1.7.1"
+  },
+  {
+    "valid": true,
+    "id": "8729e8185f758f33",
+    "type": "function",
+    "z": "7a0a571c90561237",
+    "name": "",
+    "func": "msg.profiles = msg.scrapeResult.map((profile, idx) => {\n    const link = profile.link.split('?')[0]\n    return {\n        name: profile.name,\n        link: link,\n        contactLink: `${link}/overlay/contact-info`\n    }\n})\n\nmsg.resultUrl = msg.tabs[0].url || msg.tabs[0].pendingUrl\nmsg.tabIdToClose = [msg.tabs[0].id]\n\nmsg.idx = 0\n\nreturn msg",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 380,
+    "y": 105,
+    "wires": [
+      [
+        "2acaba40c9d3e62c"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "valid": true,
+    "id": "2ad1193c0d8389cf",
+    "type": "maya-browser-open",
+    "z": "7a0a571c90561237",
+    "name": "",
+    "isProfileConfigNode": false,
+    "url": "profiles[msg.idx].contactLink",
+    "payloadTypeurl": "msg",
+    "additionalOptions": "{}",
+    "payloadTypeadditionalOptions": "json",
+    "x": 660,
+    "y": 140,
+    "wires": [
+      [
+        "5e7818a2fe0586d5"
+      ]
+    ],
+    "module": "maya-red-browser-automation",
+    "version": "1.7.1"
+  },
+  {
+    "valid": true,
+    "id": "996de0c7836bcffc",
+    "type": "maya-browser-scrape",
+    "z": "7a0a571c90561237",
+    "name": "",
+    "isProfileConfigNode": false,
+    "query": "{\"_xpath\":\"/\",\"title\":\"//div[contains(@class, 'live-video-hero')]/..//h1/../..//div[contains(@class, 'text-body-medium')]\",\"company\":\"//div[contains(@class, 'hero')]/ancestor::section//a[@href='#experience']\",\"companyLink\":\"//div[@id='experience']/ancestor::section/div[contains(@class, 'outer-container')]/ul/li[1]//a/@href\",\"location\":\"//div[contains(@class, 'hero')]/ancestor::section//div[contains(@class, 'left-panel') and not(.//h1)]/span[1]\",\"contact\":{\"_xpath\":\"//div[@data-test-modal]//section\",\"email\":\".//section[contains(@class, 'email')]//a[contains(@href, '@')]/@href\",\"phone\":\".//section//li-icon[contains(@type, 'phone')]/../ul/li/span[1]\"}}",
+    "payloadTypequery": "json",
+    "timeout": "2000",
+    "payloadTypetimeout": "num",
+    "tabId": "tabs[0].id",
+    "payloadTypetabId": "msg",
+    "x": 885,
+    "y": 390,
+    "wires": [
+      [
+        "8a6604005f656063"
+      ]
+    ],
+    "module": "maya-red-browser-automation",
+    "version": "1.7.1"
+  },
+  {
+    "valid": true,
+    "id": "8f15e2f976afc56f",
+    "type": "maya-browser-click",
+    "z": "7a0a571c90561237",
+    "name": "",
+    "isProfileConfigNode": false,
+    "delay": "100",
+    "payloadTypedelay": "num",
+    "clickType": "click",
+    "highlightDuration": "1000",
+    "payloadTypehighlightDuration": "num",
+    "selector": "//div[contains(@class, 'modal__header')]",
+    "payloadTypeselector": "str",
+    "timeout": "30000",
+    "payloadTypetimeout": "num",
+    "tabId": "tabs[0].id",
+    "payloadTypetabId": "msg",
+    "index": "0",
+    "payloadTypeindex": "num",
+    "x": 910,
+    "y": 210,
+    "wires": [
+      [
+        "3051c28e141c40be"
+      ]
+    ],
+    "module": "maya-red-browser-automation",
+    "version": "1.7.1"
+  },
+  {
+    "valid": true,
+    "id": "7439581705944446",
+    "type": "maya-browser-close-tabs",
+    "z": "7a0a571c90561237",
+    "name": "",
+    "isProfileConfigNode": false,
+    "action": "Close",
+    "timeout": "2000",
+    "payloadTypetimeout": "num",
+    "tabIds": "tabs",
+    "payloadTypetabIds": "msg",
+    "x": 370,
+    "y": 215,
+    "wires": [
+      []
+    ],
+    "module": "maya-red-browser-automation",
+    "version": "1.7.1"
+  },
+  {
+    "valid": true,
+    "id": "2acaba40c9d3e62c",
+    "type": "switch",
+    "z": "7a0a571c90561237",
+    "name": "",
+    "property": "idx",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "gte",
+        "v": "profiles.length",
+        "vt": "msg"
+      },
+      {
+        "t": "lt",
+        "v": "profiles.length",
+        "vt": "msg"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 2,
+    "x": 660,
+    "y": 85,
+    "wires": [
+      [
+        "d5af172f4c75afbe"
+      ],
+      [
+        "2ad1193c0d8389cf"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "valid": true,
+    "id": "8a6604005f656063",
+    "type": "delay",
+    "z": "7a0a571c90561237",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "4",
+    "timeoutUnits": "seconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "allowrate": false,
+    "x": 880,
+    "y": 460,
+    "wires": [
+      [
+        "bab66ab554b43b17"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "valid": true,
+    "id": "bab66ab554b43b17",
+    "type": "link out",
+    "z": "7a0a571c90561237",
+    "name": "",
+    "links": [
+      "9f847def23a90642"
+    ],
+    "x": 1080,
+    "y": 455,
+    "wires": [],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "valid": true,
+    "id": "ed596903a1c73693",
+    "type": "function",
+    "z": "7a0a571c90561237",
+    "name": "",
+    "func": "msg.finalResult = {\n    ...msg.profiles[msg.idx],\n    ...msg.scrapeResult\n}\nmsg.idx = msg.idx + 1\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 480,
+    "y": 265,
+    "wires": [
+      [
+        "2705e3cf72f33965",
+        "2acaba40c9d3e62c"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "valid": true,
+    "id": "9f847def23a90642",
+    "type": "link in",
+    "z": "7a0a571c90561237",
+    "name": "",
+    "links": [
+      "bab66ab554b43b17"
+    ],
+    "x": 230,
+    "y": 435,
+    "wires": [
+      [
+        "ed596903a1c73693",
+        "7439581705944446"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "valid": true,
+    "id": "5e7818a2fe0586d5",
+    "type": "delay",
+    "z": "7a0a571c90561237",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "4",
+    "timeoutUnits": "seconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "allowrate": false,
+    "x": 675,
+    "y": 205,
+    "wires": [
+      [
+        "8f15e2f976afc56f"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "valid": true,
+    "id": "a3f2e1977ee800e9",
+    "type": "notion-create-page",
+    "z": "7a0a571c90561237",
+    "name": "",
+    "isProfileConfigNode": false,
+    "url": "notiondb",
+    "payloadTypeurl": "flow",
+    "parent_type": "database",
+    "properties": "pageProperties",
+    "payloadTypeproperties": "msg",
+    "children": "{}",
+    "payloadTypechildren": "json",
+    "icon": "{}",
+    "payloadTypeicon": "json",
+    "cover": "{}",
+    "payloadTypecover": "json",
+    "x": 550,
+    "y": 600,
+    "wires": [
+      [
+        "537fc5f5e9c85990"
+      ]
+    ],
+    "module": "maya-red-notion",
+    "version": "v0.0.1"
+  },
+  {
+    "valid": true,
+    "id": "2705e3cf72f33965",
+    "type": "function",
+    "z": "7a0a571c90561237",
+    "name": "",
+    "func": "msg.pageProperties = {\n    Name: {\n        title: [\n            {\n                text: {\n                    content: msg.finalResult.name\n                }\n            }\n        ]\n    },\n    Link: {\n        url: msg.finalResult.link\n    },\n    Title: {\n        rich_text: [\n            {\n                type: \"text\",\n                text: {\n                    content: msg.finalResult.title\n                }\n            }\n        ]\n    },\n    Company: {\n        rich_text: [\n            {\n                type: \"text\",\n                text: {\n                    content: msg.finalResult.company,\n                    link: {\n                        type: \"url\",\n                        url: msg.finalResult.companyLink\n                    }\n                },\n                //href: msg.finalResult.companyLink\n            }\n        ]\n    },\n    Location: {\n        rich_text: [\n            {\n                type: \"text\",\n                text: {\n                    content: msg.finalResult.location\n                }\n            }\n        ]\n    }\n}\n\nif (msg.finalResult.contact.phone) {\n    msg.pageProperties.Phone = {\n        phone_number: msg.finalResult.contact.phone.toString()\n    }\n}\n\nif (msg.finalResult.contact.email) {\n    msg.pageProperties.Email = {\n        email: msg.finalResult.contact.email.replace('mailto:', '')\n    }\n}\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 390,
+    "y": 600,
+    "wires": [
+      [
+        "a3f2e1977ee800e9"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "valid": true,
+    "id": "537fc5f5e9c85990",
+    "type": "debug",
+    "z": "7a0a571c90561237",
+    "name": "",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 780,
+    "y": 600,
+    "wires": [],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "valid": true,
+    "id": "40cc1c181a504f9b",
+    "type": "maya-browser-open",
+    "z": "7a0a571c90561237",
+    "name": "",
+    "isProfileConfigNode": false,
+    "url": "resultUrl",
+    "payloadTypeurl": "msg",
+    "additionalOptions": "{}",
+    "payloadTypeadditionalOptions": "json",
+    "x": 860,
+    "y": -35,
+    "wires": [
+      [
+        "998e1795f7bd5a27"
+      ]
+    ],
+    "module": "maya-red-browser-automation",
+    "version": "1.7.1"
+  },
+  {
+    "valid": true,
+    "id": "4bc136ae96651948",
+    "type": "function",
+    "z": "7a0a571c90561237",
+    "name": "",
+    "func": "msg.resultUrl = msg.resultUrl.replace(`&page=${msg.pageIdx}`, ``)\nmsg.resultUrl = `${msg.resultUrl}&page=${msg.pageIdx+1}`\nmsg.pageIdx = msg.pageIdx + 1\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 860,
+    "y": -80,
+    "wires": [
+      [
+        "40cc1c181a504f9b",
+        "16ce6b5219de2a97"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "valid": true,
+    "id": "d5af172f4c75afbe",
+    "type": "maya-browser-close-tabs",
+    "z": "7a0a571c90561237",
+    "name": "",
+    "isProfileConfigNode": false,
+    "action": "Close",
+    "timeout": "2000",
+    "payloadTypetimeout": "num",
+    "tabIds": "tabIdsToClose",
+    "payloadTypetabIds": "msg",
+    "x": 860,
+    "y": 25,
+    "wires": [
+      []
+    ],
+    "module": "maya-red-browser-automation",
+    "version": "1.7.1"
+  },
+  {
+    "valid": true,
+    "id": "998e1795f7bd5a27",
+    "type": "delay",
+    "z": "7a0a571c90561237",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "1",
+    "timeoutUnits": "minutes",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "allowrate": false,
+    "x": 1265,
+    "y": 460,
+    "wires": [
+      [
+        "b682093a1dad325f"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "valid": true,
+    "id": "b682093a1dad325f",
+    "type": "link out",
+    "z": "7a0a571c90561237",
+    "name": "",
+    "links": [
+      "e9499ab5dac4238f"
+    ],
+    "x": 1415,
+    "y": 55,
+    "wires": [],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "valid": true,
+    "id": "e9499ab5dac4238f",
+    "type": "link in",
+    "z": "7a0a571c90561237",
+    "name": "",
+    "links": [
+      "b682093a1dad325f"
+    ],
+    "x": 210,
+    "y": 160,
+    "wires": [
+      [
+        "5ad69b8864907484"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "valid": true,
+    "id": "16ce6b5219de2a97",
+    "type": "debug",
+    "z": "7a0a571c90561237",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1085,
+    "y": -90,
+    "wires": [],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "valid": true,
+    "id": "3051c28e141c40be",
+    "type": "switch",
+    "z": "7a0a571c90561237",
+    "name": "",
+    "property": "__isError",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "true"
+      },
+      {
+        "t": "else"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 2,
+    "x": 910,
+    "y": 265,
+    "wires": [
+      [
+        "9249a5710e36d20b"
+      ],
+      [
+        "996de0c7836bcffc"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "valid": true,
+    "id": "9249a5710e36d20b",
+    "type": "delay",
+    "z": "7a0a571c90561237",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "30",
+    "timeoutUnits": "seconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "allowrate": false,
+    "x": 1280,
+    "y": 605,
+    "wires": [
+      [
+        "c0b19b0f41b52c4f"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "valid": true,
+    "id": "0d66109d2aa1b816",
+    "type": "maya-browser-update-tab",
+    "z": "7a0a571c90561237",
+    "name": "",
+    "isProfileConfigNode": false,
+    "timeout": "2000",
+    "payloadTypetimeout": "num",
+    "updates": "updatesForRefresh",
+    "payloadTypeupdates": "msg",
+    "tabId": "tabs[0].id",
+    "payloadTypetabId": "msg",
+    "x": 1170,
+    "y": 265,
+    "wires": [
+      [
+        "34b4d2772c99fc40"
+      ]
+    ],
+    "module": "maya-red-browser-automation",
+    "version": "1.7.1"
+  },
+  {
+    "valid": true,
+    "id": "c0b19b0f41b52c4f",
+    "type": "function",
+    "z": "7a0a571c90561237",
+    "name": "",
+    "func": "msg.__isError = undefined\nmsg.__error = undefined\nmsg.updatesForRefresh = {\n    url: msg.tabs[0].url\n}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1385,
+    "y": 210,
+    "wires": [
+      [
+        "0d66109d2aa1b816"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "valid": true,
+    "id": "34b4d2772c99fc40",
+    "type": "link out",
+    "z": "7a0a571c90561237",
+    "name": "",
+    "links": [
+      "348642fde1a45594"
+    ],
+    "x": 1285,
+    "y": 325,
+    "wires": [],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "valid": true,
+    "id": "348642fde1a45594",
+    "type": "link in",
+    "z": "7a0a571c90561237",
+    "name": "",
+    "links": [
+      "34b4d2772c99fc40"
+    ],
+    "x": 745,
+    "y": 325,
+    "wires": [
+      [
+        "8f15e2f976afc56f"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6"
+  },
+  {
+    "valid": true,
+    "id": "88b305f49b44e5f8",
+    "type": "bot-info",
+    "z": "7a0a571c90561237",
+    "name": "Bot Details",
+    "title": "Scrape Linkedin Search Results into Notion",
+    "description": "Manually go and set LinkedIn search criteria,\nand get name, email, company, title, phone, location and profile link for your first degree connections.\nDISCLAIMER : Scrape top visible results at a time, opening too many profiles (100+) in a day might get your Linkedin account banned.\n\nConfigure details in the <Configure Notion Link Here> node.",
+    "created": "July 14, 2022",
+    "timestamp": 1657749301364,
+    "compatibility": [
+      {
+        "label": "MacOS",
+        "value": "macos"
+      },
+      {
+        "label": "Linux",
+        "value": "linux"
+      }
+    ],
+    "developer": "dushyant@mayalabs.io",
+    "previewMedia": "",
+    "version": "1.0.1",
+    "x": 690,
+    "y": -150,
+    "wires": [],
+    "module": "maya-red-bot-utils"
+  },
+  {
+    "valid": true,
+    "id": "56e6e949fe356a71",
+    "type": "bot-config",
+    "z": "7a0a571c90561237",
+    "name": "Configure Notion Link Here",
+    "rules": [
+      {
+        "t": "set",
+        "p": "notiondb",
+        "pt": "flow",
+        "varName": "Notion database",
+        "varDesc": "Add URL to a notion database here, with columns : Name, Email, Company, Title, Phone, Location, Link ",
+        "reqd": true,
+        "exportVar": false,
+        "to": "",
+        "tot": "str"
+      }
+    ],
+    "x": 915,
+    "y": -255,
+    "wires": [],
+    "module": "maya-red-bot-utils",
+    "version": "1.0.1"
+  },
+  {
+    "type": "tab",
+    "id": "7a0a571c90561237",
+    "disabled": false,
+    "info": "",
+    "label": "Flow 1",
+    "changed": false,
+    "in": [],
+    "out": [],
+    "module": null,
+    "version": null
+  }
+]
