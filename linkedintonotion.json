@@ -697,7 +697,7 @@
     "z": "7a0a571c90561237",
     "name": "Bot Details",
     "title": "Scrape Linkedin Search Results into Notion",
-    "description": "Manually go and set LinkedIn search criteria,\nand get name, email, company, title, phone, location and profile link for your first degree connections.\nDISCLAIMER : Scrape top visible results at a time, opening too many profiles (100+) in a day might get your Linkedin account banned.\n\nConfigure details in the <Configure Notion Link Here> node.",
+    "description": "Manually go and set LinkedIn search criteria,\nand get name, email, company, title, phone, location and profile link for your first degree connections.\nDISCLAIMER : Scrape top visible results at a time, opening too many profiles (100+) in a day might get your Linkedin account locked/banned.\n\nConfigure details in the <Configure Notion Link Here> node.",
     "created": "July 14, 2022",
     "timestamp": 1657749301364,
     "compatibility": [
