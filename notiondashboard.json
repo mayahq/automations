@@ -1,0 +1,606 @@
+[
+  {
+    "valid": true,
+    "id": "f074c339e7eb31fc",
+    "type": "ui_tab",
+    "name": "Home",
+    "icon": "dashboard",
+    "disabled": false,
+    "hidden": false,
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "c957e89ca93e17f9",
+    "type": "ui_base",
+    "theme": {
+      "name": "theme-light",
+      "lightTheme": {
+        "default": "#0094CE",
+        "baseColor": "#0094CE",
+        "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+        "edited": false
+      },
+      "darkTheme": {
+        "default": "#097479",
+        "baseColor": "#097479",
+        "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+        "edited": false
+      },
+      "customTheme": {
+        "name": "Untitled Theme 1",
+        "default": "#4B7930",
+        "baseColor": "#4B7930",
+        "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+      },
+      "themeState": {
+        "base-color": {
+          "default": "#0094CE",
+          "value": "#0094CE",
+          "edited": false
+        },
+        "page-titlebar-backgroundColor": {
+          "value": "#0094CE",
+          "edited": false
+        },
+        "page-backgroundColor": {
+          "value": "#fafafa",
+          "edited": false
+        },
+        "page-sidebar-backgroundColor": {
+          "value": "#ffffff",
+          "edited": false
+        },
+        "group-textColor": {
+          "value": "#1bbfff",
+          "edited": false
+        },
+        "group-borderColor": {
+          "value": "#ffffff",
+          "edited": false
+        },
+        "group-backgroundColor": {
+          "value": "#ffffff",
+          "edited": false
+        },
+        "widget-textColor": {
+          "value": "#111111",
+          "edited": false
+        },
+        "widget-backgroundColor": {
+          "value": "#0094ce",
+          "edited": false
+        },
+        "widget-borderColor": {
+          "value": "#ffffff",
+          "edited": false
+        },
+        "base-font": {
+          "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+        }
+      },
+      "angularTheme": {
+        "primary": "indigo",
+        "accents": "blue",
+        "warn": "red",
+        "background": "grey",
+        "palette": "light"
+      }
+    },
+    "site": {
+      "name": "Node-RED Dashboard",
+      "hideToolbar": "false",
+      "allowSwipe": "false",
+      "lockMenu": "false",
+      "allowTempTheme": "true",
+      "dateFormat": "DD/MM/YYYY",
+      "sizes": {
+        "sx": 48,
+        "sy": 48,
+        "gx": 6,
+        "gy": 6,
+        "cx": 6,
+        "cy": 6,
+        "px": 0,
+        "py": 0
+      }
+    },
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "8afd3649ec39de6f",
+    "type": "ui_group",
+    "name": "View",
+    "tab": "f074c339e7eb31fc",
+    "order": 1,
+    "disp": true,
+    "width": "8",
+    "collapse": false,
+    "className": "",
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "ed3059d464a0941f",
+    "type": "ui_group",
+    "name": "Action",
+    "tab": "f074c339e7eb31fc",
+    "order": 2,
+    "disp": true,
+    "width": "6",
+    "collapse": false,
+    "className": "",
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "28549175cf621d44",
+    "type": "http request",
+    "z": "619d147b.6d0aac",
+    "name": "Send Email to User Now",
+    "method": "POST",
+    "ret": "obj",
+    "paytoqs": "body",
+    "url": "https://api.sendgrid.com/v3/mail/send",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "authType": "bearer",
+    "x": 1353.4502881380815,
+    "y": 1000,
+    "wires": [
+      []
+    ],
+    "color": "#996F6F",
+    "darkColor": "#905454",
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "a52b1f36d767482a",
+    "type": "function",
+    "z": "619d147b.6d0aac",
+    "name": "Format For SendGrid",
+    "func": "var toEmail = flow.get('item').email\nvar fromEmail = \"sibesh@mayalabs.io\"\nvar dynamicData = {\n    \"content\" : msg.template\n}\n\nvar payload = {\n   \"from\":{\n      \"name\" : \"Sibesh Kar\",\n      \"email\": fromEmail\n   },\n   \"personalizations\":[\n      {\n         \"to\":[\n            {\n               \"email\": toEmail\n            },\n            {\n               \"email\": \"humans@mayalabs.io\"\n            },\n         ],\n         \"dynamic_template_data\":dynamicData\n   }\n   ],\n   \"template_id\":\"d-12b2f4949709447dae52145538d3b85b\"\n}\n\nmsg.payload = payload\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1370,
+    "y": 799.7588662095367,
+    "wires": [
+      [
+        "5db9c12c7f8532ab",
+        "28549175cf621d44"
+      ]
+    ],
+    "color": "#adadad",
+    "darkColor": "#808080",
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "5db9c12c7f8532ab",
+    "type": "debug",
+    "z": "619d147b.6d0aac",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload.personalizations",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1579.190613845577,
+    "y": 939.5735405644584,
+    "wires": [],
+    "color": "#AE9554",
+    "darkColor": "#9E8647",
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "220e66345bf1e095",
+    "type": "notion-query-db",
+    "z": "619d147b.6d0aac",
+    "name": "",
+    "isProfileConfigNode": false,
+    "url": "https://www.notion.so/dotmaya/d1b062722f0f4f0b90571070f6a37003?v=3c9cf8f2729d4fb6aac69503872a75c9",
+    "payloadTypeurl": "str",
+    "filter": "{}",
+    "payloadTypefilter": "json",
+    "sorts": "{}",
+    "payloadTypesorts": "json",
+    "start_cursor": "",
+    "payloadTypestart_cursor": "str",
+    "page_size": "10",
+    "payloadTypepage_size": "num",
+    "x": 450,
+    "y": 765,
+    "wires": [
+      [
+        "b7d128b9708a9a9f"
+      ]
+    ],
+    "color": "#996F6F",
+    "darkColor": "#905454",
+    "module": "maya-red-notion",
+    "version": "0.0.1"
+  },
+  {
+    "valid": true,
+    "id": "c785ce7570c93c92",
+    "type": "inject",
+    "z": "619d147b.6d0aac",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 450,
+    "y": 675,
+    "wires": [
+      [
+        "220e66345bf1e095"
+      ]
+    ],
+    "color": "#adadad",
+    "darkColor": "#808080",
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "010014f1230b7ad4",
+    "type": "debug",
+    "z": "619d147b.6d0aac",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 840,
+    "y": 780,
+    "wires": [],
+    "color": "#674C80",
+    "darkColor": "#553C6B",
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "b7d128b9708a9a9f",
+    "type": "function",
+    "z": "619d147b.6d0aac",
+    "name": "",
+    "func": "function filterOutStuff(item){\n    var result = item.properties;\n    var payload = {\n        phone : result.Phone.phone_number?.rich_text,\n        email : result.Email.email,\n        name : result.Name.title[0]?.plain_text,\n        company : result.Company.rich_text[0].plain_text,\n    }\n    return payload\n}\n\nresults = msg.payload.results.map(filterOutStuff)\n\nmsg.payload = results\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 615,
+    "y": 690,
+    "wires": [
+      [
+        "0a91ca25b181be27"
+      ]
+    ],
+    "color": "#619259",
+    "darkColor": "#4F7C48",
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "fc820778b7e249c1",
+    "type": "ui_button",
+    "z": "619d147b.6d0aac",
+    "name": "",
+    "group": "8afd3649ec39de6f",
+    "order": 0,
+    "width": 0,
+    "height": 0,
+    "passthru": false,
+    "label": "Refresh",
+    "tooltip": "",
+    "color": "#fff",
+    "bgcolor": "",
+    "className": "",
+    "icon": "",
+    "payload": "",
+    "payloadType": "str",
+    "topic": "topic",
+    "topicType": "msg",
+    "x": 270,
+    "y": 735,
+    "wires": [
+      [
+        "220e66345bf1e095"
+      ]
+    ],
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "0a91ca25b181be27",
+    "type": "ui_table",
+    "z": "619d147b.6d0aac",
+    "group": "8afd3649ec39de6f",
+    "name": "",
+    "order": 1,
+    "width": "8",
+    "height": "8",
+    "columns": [],
+    "outputs": 1,
+    "cts": true,
+    "x": 840,
+    "y": 615,
+    "wires": [
+      [
+        "aa8c9dcd95f7a6af",
+        "9bb9918b30595239",
+        "534c3f690a8c9dff"
+      ]
+    ],
+    "color": "#808080",
+    "darkColor": "#6A6A6A",
+    "module": "node-red-node-ui-table",
+    "version": "0.3.12"
+  },
+  {
+    "valid": true,
+    "id": "aa8c9dcd95f7a6af",
+    "type": "change",
+    "z": "619d147b.6d0aac",
+    "name": "",
+    "rules": [
+      {
+        "t": "set",
+        "p": "item",
+        "pt": "flow",
+        "to": "payload",
+        "tot": "msg"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 1125,
+    "y": 645,
+    "wires": [
+      []
+    ],
+    "color": "#619259",
+    "darkColor": "#4F7C48",
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "9bb9918b30595239",
+    "type": "ui_text",
+    "z": "619d147b.6d0aac",
+    "group": "ed3059d464a0941f",
+    "order": 2,
+    "width": 0,
+    "height": 0,
+    "name": "",
+    "label": "name",
+    "format": "{{msg.payload.name}}",
+    "layout": "row-left",
+    "className": "",
+    "x": 1035,
+    "y": 540,
+    "wires": [],
+    "color": "#AE9554",
+    "darkColor": "#9E8647",
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "534c3f690a8c9dff",
+    "type": "template",
+    "z": "619d147b.6d0aac",
+    "name": "",
+    "field": "payload",
+    "fieldType": "msg",
+    "format": "handlebars",
+    "syntax": "mustache",
+    "template": "<div>\nHi {{payload.name}}, <br><br>\nI'm Sibesh, from Maya Labs.\nWe're building AI that writes code.<br><br>\n\nThank you.<br><br>\n\nRegards,\nSibesh\n</div>",
+    "output": "str",
+    "x": 990,
+    "y": 720,
+    "wires": [
+      [
+        "bf8f80dfdf19e3ac"
+      ]
+    ],
+    "color": "#6F7F99",
+    "darkColor": "#526788",
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "bf8f80dfdf19e3ac",
+    "type": "change",
+    "z": "619d147b.6d0aac",
+    "name": "",
+    "rules": [
+      {
+        "t": "set",
+        "p": "template",
+        "pt": "msg",
+        "to": "payload",
+        "tot": "msg"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 1200,
+    "y": 735,
+    "wires": [
+      [
+        "bc0b8a2f8f85228b",
+        "a52b1f36d767482a"
+      ]
+    ],
+    "color": "#619259",
+    "darkColor": "#4F7C48",
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "bc0b8a2f8f85228b",
+    "type": "ui_template",
+    "z": "619d147b.6d0aac",
+    "group": "ed3059d464a0941f",
+    "name": "",
+    "order": 2,
+    "width": "6",
+    "height": "7",
+    "format": "<div ng-bind-html=\"msg.payload\"></div>",
+    "storeOutMessages": true,
+    "fwdInMessages": true,
+    "resendOnRefresh": true,
+    "templateScope": "local",
+    "className": "",
+    "x": 1395,
+    "y": 690,
+    "wires": [
+      []
+    ],
+    "color": "#674C80",
+    "darkColor": "#553C6B",
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "dce04045f6a68408",
+    "type": "ui_button",
+    "z": "619d147b.6d0aac",
+    "name": "Send Email",
+    "group": "ed3059d464a0941f",
+    "order": 2,
+    "width": 0,
+    "height": 0,
+    "passthru": false,
+    "label": "Send Email",
+    "tooltip": "",
+    "color": "#fff",
+    "bgcolor": "",
+    "className": "",
+    "icon": "",
+    "payload": "item",
+    "payloadType": "flow",
+    "topic": "topic",
+    "topicType": "msg",
+    "x": 795,
+    "y": 705,
+    "wires": [
+      [
+        "534c3f690a8c9dff",
+        "db4727dad834ab61"
+      ]
+    ],
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "db4727dad834ab61",
+    "type": "ui_toast",
+    "z": "619d147b.6d0aac",
+    "position": "top right",
+    "displayTime": "3",
+    "highlight": "",
+    "sendall": true,
+    "outputs": 0,
+    "ok": "OK",
+    "cancel": "",
+    "raw": false,
+    "className": "",
+    "topic": "",
+    "name": "",
+    "x": 1035,
+    "y": 870,
+    "wires": [],
+    "color": "#674C80",
+    "darkColor": "#553C6B",
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "50fcbec0dd5d5b5b",
+    "type": "bot-info",
+    "z": "619d147b.6d0aac",
+    "name": "Details",
+    "title": "Notion DB Custom Email Dashboard",
+    "description": "This is a custom dashboard that let's you fetch some contacts stored in a Notion DB and send custom emails to them in one go using Sendgrid. Configure Sendgrid and Notion DB page.",
+    "created": "July 20, 2022",
+    "timestamp": 1658262496962,
+    "compatibility": [
+      {
+        "label": "Maya Cloud",
+        "value": "cloud"
+      }
+    ],
+    "developer": "sibesh@mayalabs.io",
+    "previewMedia": "",
+    "version": "1.0.1",
+    "x": 705,
+    "y": 885,
+    "wires": [],
+    "color": "#674C80",
+    "darkColor": "#553C6B",
+    "module": "maya-red-bot-utils"
+  },
+  {
+    "id": "619d147b.6d0aac",
+    "type": "tab",
+    "label": "Flow 1",
+    "disabled": false,
+    "info": "",
+    "in": [],
+    "out": [],
+    "module": null,
+    "version": null,
+    "changed": false
+  }
+]
