@@ -151,8 +151,8 @@
     "persist": false,
     "proxy": "",
     "authType": "bearer",
-    "x": 1353.4502881380815,
-    "y": 1000,
+    "x": 1278.4502881380815,
+    "y": 700,
     "wires": [
       []
     ],
@@ -173,16 +173,16 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 1370,
-    "y": 799.7588662095367,
+    "x": 1340,
+    "y": 529.7588662095367,
     "wires": [
       [
         "5db9c12c7f8532ab",
         "28549175cf621d44"
       ]
     ],
-    "color": "#adadad",
-    "darkColor": "#808080",
+    "color": "#9F4E2A",
+    "darkColor": "#884324",
     "module": "node-red",
     "version": "2.0.6-git"
   },
@@ -200,11 +200,11 @@
     "targetType": "msg",
     "statusVal": "",
     "statusType": "auto",
-    "x": 1579.190613845577,
-    "y": 939.5735405644584,
+    "x": 1549.190613845577,
+    "y": 669.5735405644584,
     "wires": [],
-    "color": "#AE9554",
-    "darkColor": "#9E8647",
+    "color": "#6F7F99",
+    "darkColor": "#526788",
     "module": "node-red",
     "version": "2.0.6-git"
   },
@@ -225,15 +225,15 @@
     "payloadTypestart_cursor": "str",
     "page_size": "10",
     "payloadTypepage_size": "num",
-    "x": 450,
-    "y": 765,
+    "x": 480,
+    "y": 450,
     "wires": [
       [
         "b7d128b9708a9a9f"
       ]
     ],
-    "color": "#996F6F",
-    "darkColor": "#905454",
+    "color": "#AE9554",
+    "darkColor": "#9E8647",
     "module": "maya-red-notion",
     "version": "0.0.1"
   },
@@ -259,15 +259,15 @@
     "topic": "",
     "payload": "",
     "payloadType": "date",
-    "x": 450,
-    "y": 675,
+    "x": 480,
+    "y": 360,
     "wires": [
       [
         "220e66345bf1e095"
       ]
     ],
-    "color": "#adadad",
-    "darkColor": "#808080",
+    "color": "#619259",
+    "darkColor": "#4F7C48",
     "module": "node-red",
     "version": "2.0.6-git"
   },
@@ -284,11 +284,11 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 840,
-    "y": 780,
+    "x": 870,
+    "y": 465,
     "wires": [],
-    "color": "#674C80",
-    "darkColor": "#553C6B",
+    "color": "#AE9554",
+    "darkColor": "#9E8647",
     "module": "node-red",
     "version": "2.0.6-git"
   },
@@ -304,15 +304,15 @@
     "initialize": "",
     "finalize": "",
     "libs": [],
-    "x": 615,
-    "y": 690,
+    "x": 645,
+    "y": 375,
     "wires": [
       [
         "0a91ca25b181be27"
       ]
     ],
-    "color": "#619259",
-    "darkColor": "#4F7C48",
+    "color": "#808080",
+    "darkColor": "#6A6A6A",
     "module": "node-red",
     "version": "2.0.6-git"
   },
@@ -337,8 +337,8 @@
     "payloadType": "str",
     "topic": "topic",
     "topicType": "msg",
-    "x": 270,
-    "y": 735,
+    "x": 300,
+    "y": 420,
     "wires": [
       [
         "220e66345bf1e095"
@@ -360,8 +360,8 @@
     "columns": [],
     "outputs": 1,
     "cts": true,
-    "x": 840,
-    "y": 615,
+    "x": 870,
+    "y": 300,
     "wires": [
       [
         "aa8c9dcd95f7a6af",
@@ -369,8 +369,8 @@
         "534c3f690a8c9dff"
       ]
     ],
-    "color": "#808080",
-    "darkColor": "#6A6A6A",
+    "color": "#996F6F",
+    "darkColor": "#905454",
     "module": "node-red-node-ui-table",
     "version": "0.3.12"
   },
@@ -394,13 +394,13 @@
     "from": "",
     "to": "",
     "reg": false,
-    "x": 1125,
-    "y": 645,
+    "x": 1155,
+    "y": 330,
     "wires": [
       []
     ],
-    "color": "#619259",
-    "darkColor": "#4F7C48",
+    "color": "#AE9554",
+    "darkColor": "#9E8647",
     "module": "node-red",
     "version": "2.0.6-git"
   },
@@ -418,11 +418,11 @@
     "format": "{{msg.payload.name}}",
     "layout": "row-left",
     "className": "",
-    "x": 1035,
-    "y": 540,
+    "x": 1065,
+    "y": 225,
     "wires": [],
-    "color": "#AE9554",
-    "darkColor": "#9E8647",
+    "color": "#adadad",
+    "darkColor": "#808080",
     "module": "node-red-dashboard",
     "version": "3.1.7"
   },
@@ -438,15 +438,15 @@
     "syntax": "mustache",
     "template": "<div>\nHi {{payload.name}}, <br><br>\nI'm Sibesh, from Maya Labs.\nWe're building AI that writes code.<br><br>\n\nThank you.<br><br>\n\nRegards,\nSibesh\n</div>",
     "output": "str",
-    "x": 990,
-    "y": 720,
+    "x": 1020,
+    "y": 405,
     "wires": [
       [
         "bf8f80dfdf19e3ac"
       ]
     ],
-    "color": "#6F7F99",
-    "darkColor": "#526788",
+    "color": "#AE9554",
+    "darkColor": "#9E8647",
     "module": "node-red",
     "version": "2.0.6-git"
   },
@@ -470,16 +470,16 @@
     "from": "",
     "to": "",
     "reg": false,
-    "x": 1200,
-    "y": 735,
+    "x": 1230,
+    "y": 420,
     "wires": [
       [
         "bc0b8a2f8f85228b",
         "a52b1f36d767482a"
       ]
     ],
-    "color": "#619259",
-    "darkColor": "#4F7C48",
+    "color": "#6F7F99",
+    "darkColor": "#526788",
     "module": "node-red",
     "version": "2.0.6-git"
   },
@@ -499,13 +499,13 @@
     "resendOnRefresh": true,
     "templateScope": "local",
     "className": "",
-    "x": 1395,
-    "y": 690,
+    "x": 1425,
+    "y": 375,
     "wires": [
       []
     ],
-    "color": "#674C80",
-    "darkColor": "#553C6B",
+    "color": "#619259",
+    "darkColor": "#4F7C48",
     "module": "node-red-dashboard",
     "version": "3.1.7"
   },
@@ -530,8 +530,8 @@
     "payloadType": "flow",
     "topic": "topic",
     "topicType": "msg",
-    "x": 795,
-    "y": 705,
+    "x": 825,
+    "y": 390,
     "wires": [
       [
         "534c3f690a8c9dff",
@@ -557,8 +557,8 @@
     "className": "",
     "topic": "",
     "name": "",
-    "x": 1035,
-    "y": 870,
+    "x": 1065,
+    "y": 555,
     "wires": [],
     "color": "#674C80",
     "darkColor": "#553C6B",
@@ -584,11 +584,11 @@
     "developer": "sibesh@mayalabs.io",
     "previewMedia": "",
     "version": "1.0.1",
-    "x": 705,
-    "y": 885,
+    "x": 735,
+    "y": 570,
     "wires": [],
-    "color": "#674C80",
-    "darkColor": "#553C6B",
+    "color": "#619259",
+    "darkColor": "#4F7C48",
     "module": "maya-red-bot-utils"
   },
   {
