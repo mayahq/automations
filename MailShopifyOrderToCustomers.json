@@ -1,0 +1,650 @@
+[
+  {
+    "valid": true,
+    "id": "be8d89405f835cb1",
+    "type": "shopify-auth",
+    "shopUrl": "vatsals1.myshopify.com",
+    "payloadTypeshopUrl": "str",
+    "module": "maya-red-shopify",
+    "version": "1.0.0"
+  },
+  {
+    "valid": true,
+    "id": "aaceaf6f0976f7e0",
+    "type": "ui_tab",
+    "name": "Orders",
+    "icon": "dashboard",
+    "disabled": false,
+    "hidden": false,
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "a9c0366d5143ed44",
+    "type": "ui_base",
+    "theme": {
+      "name": "theme-light",
+      "lightTheme": {
+        "default": "#0094CE",
+        "baseColor": "#0094CE",
+        "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+        "edited": false
+      },
+      "darkTheme": {
+        "default": "#097479",
+        "baseColor": "#097479",
+        "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+        "edited": false
+      },
+      "customTheme": {
+        "name": "Untitled Theme 1",
+        "default": "#4B7930",
+        "baseColor": "#4B7930",
+        "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+      },
+      "themeState": {
+        "base-color": {
+          "default": "#0094CE",
+          "value": "#0094CE",
+          "edited": false
+        },
+        "page-titlebar-backgroundColor": {
+          "value": "#0094CE",
+          "edited": false
+        },
+        "page-backgroundColor": {
+          "value": "#fafafa",
+          "edited": false
+        },
+        "page-sidebar-backgroundColor": {
+          "value": "#ffffff",
+          "edited": false
+        },
+        "group-textColor": {
+          "value": "#1bbfff",
+          "edited": false
+        },
+        "group-borderColor": {
+          "value": "#ffffff",
+          "edited": false
+        },
+        "group-backgroundColor": {
+          "value": "#ffffff",
+          "edited": false
+        },
+        "widget-textColor": {
+          "value": "#111111",
+          "edited": false
+        },
+        "widget-backgroundColor": {
+          "value": "#0094ce",
+          "edited": false
+        },
+        "widget-borderColor": {
+          "value": "#ffffff",
+          "edited": false
+        },
+        "base-font": {
+          "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+        }
+      },
+      "angularTheme": {
+        "primary": "indigo",
+        "accents": "blue",
+        "warn": "red",
+        "background": "grey",
+        "palette": "light"
+      }
+    },
+    "site": {
+      "name": "Node-RED Dashboard",
+      "hideToolbar": "false",
+      "allowSwipe": "false",
+      "lockMenu": "false",
+      "allowTempTheme": "true",
+      "dateFormat": "DD/MM/YYYY",
+      "sizes": {
+        "sx": 48,
+        "sy": 48,
+        "gx": 6,
+        "gy": 6,
+        "cx": 6,
+        "cy": 6,
+        "px": 0,
+        "py": 0
+      }
+    },
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "98b7f3a79909c91e",
+    "type": "ui_group",
+    "name": "Default",
+    "tab": "aaceaf6f0976f7e0",
+    "order": 1,
+    "disp": true,
+    "width": "8",
+    "collapse": false,
+    "className": "",
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "94ff3c5caa315fa9",
+    "type": "ui_tab",
+    "name": "Download",
+    "icon": "fa-cloud-download fa-2x",
+    "order": 4,
+    "disabled": false,
+    "hidden": false,
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "0676e20f216542e0",
+    "type": "ui_link",
+    "name": "Link 3",
+    "icon": "open_in_browser",
+    "target": "newtab",
+    "order": 3,
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "0103ad03728e13e1",
+    "type": "ui_group",
+    "name": "SelectOrder",
+    "tab": "aaceaf6f0976f7e0",
+    "order": 2,
+    "disp": true,
+    "width": "11",
+    "collapse": false,
+    "className": "",
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "f97980d9f32d9c78",
+    "type": "ui_button",
+    "z": "Y5op07n2i7uAgvsI",
+    "name": "",
+    "group": "98b7f3a79909c91e",
+    "order": 1,
+    "width": "4",
+    "height": "1",
+    "passthru": false,
+    "label": "Get Order",
+    "tooltip": "",
+    "color": "#fff",
+    "bgcolor": "",
+    "className": "",
+    "icon": "",
+    "payload": "",
+    "payloadType": "str",
+    "topic": "topic",
+    "topicType": "msg",
+    "x": 375,
+    "y": 150,
+    "wires": [
+      [
+        "b53a7ddb9201bfb5"
+      ]
+    ],
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "f0a8659dab67c873",
+    "type": "ui_table",
+    "z": "Y5op07n2i7uAgvsI",
+    "group": "98b7f3a79909c91e",
+    "name": "Order Table",
+    "order": 2,
+    "width": "8",
+    "height": "9",
+    "columns": [
+      {
+        "field": "name",
+        "title": "name",
+        "width": "",
+        "align": "left",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "price",
+        "title": "price",
+        "width": "",
+        "align": "left",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "currency",
+        "title": "currency",
+        "width": "",
+        "align": "left",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "email",
+        "title": "email",
+        "width": "",
+        "align": "left",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "time",
+        "title": "time",
+        "width": "",
+        "align": "left",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      }
+    ],
+    "outputs": 1,
+    "cts": true,
+    "x": 375,
+    "y": 420,
+    "wires": [
+      [
+        "eaa54f1a49b18c38"
+      ]
+    ],
+    "color": "#AE9554",
+    "darkColor": "#9E8647",
+    "module": "node-red-node-ui-table",
+    "version": "0.3.12"
+  },
+  {
+    "valid": true,
+    "id": "b53a7ddb9201bfb5",
+    "type": "get-orders",
+    "z": "Y5op07n2i7uAgvsI",
+    "name": "",
+    "isProfileConfigNode": false,
+    "ShopifyAuth": "be8d89405f835cb1",
+    "orderId": "",
+    "payloadTypeorderId": "str",
+    "orderIdToDelete": "",
+    "payloadTypeorderIdToDelete": "str",
+    "orderIdForFulfillment": "",
+    "payloadTypeorderIdForFulfillment": "str",
+    "action": "getAllOrders",
+    "x": 375,
+    "y": 240,
+    "wires": [
+      [
+        "4df5cec17164ee0a"
+      ]
+    ],
+    "color": "#808080",
+    "darkColor": "#6A6A6A",
+    "module": "maya-red-shopify",
+    "version": "1.0.0"
+  },
+  {
+    "valid": true,
+    "id": "4df5cec17164ee0a",
+    "type": "function",
+    "z": "Y5op07n2i7uAgvsI",
+    "name": "Send to table",
+    "func": "\nmsg.payload = msg.orders.orders.map((order)=>{\n    return {\n        \"name\": order.line_items[0].name,\n        \"price\":order.total_price,\n        \"currency\":order.currency,\n        \"email\":order.email,\n        \"time\":order.created_at,\n    }\n})\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 375,
+    "y": 330,
+    "wires": [
+      [
+        "f0a8659dab67c873"
+      ]
+    ],
+    "color": "#619259",
+    "darkColor": "#4F7C48",
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "976527f8fff5df4c",
+    "type": "e-mail",
+    "z": "Y5op07n2i7uAgvsI",
+    "server": "smtp.gmail.com",
+    "port": "465",
+    "secure": true,
+    "tls": true,
+    "name": "",
+    "dname": "Email",
+    "x": 1260,
+    "y": 240,
+    "wires": [],
+    "color": "#AE9554",
+    "darkColor": "#9E8647",
+    "module": "node-red-node-email",
+    "version": "1.15.1"
+  },
+  {
+    "valid": true,
+    "id": "1c386da21ca245db",
+    "type": "ui_table",
+    "z": "Y5op07n2i7uAgvsI",
+    "group": "0103ad03728e13e1",
+    "name": "Selected table",
+    "order": 2,
+    "width": "8",
+    "height": "9",
+    "columns": [
+      {
+        "field": "name",
+        "title": "name",
+        "width": "",
+        "align": "left",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "price",
+        "title": "price",
+        "width": "",
+        "align": "left",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "currency",
+        "title": "currency",
+        "width": "",
+        "align": "left",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "email",
+        "title": "email",
+        "width": "",
+        "align": "left",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "time",
+        "title": "time",
+        "width": "",
+        "align": "left",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      }
+    ],
+    "outputs": 1,
+    "cts": true,
+    "x": 645,
+    "y": 240,
+    "wires": [
+      [
+        "194f23774851a4fa",
+        "3b6d391fd7672d3d"
+      ]
+    ],
+    "color": "#adadad",
+    "darkColor": "#808080",
+    "module": "node-red-node-ui-table",
+    "version": "0.3.12"
+  },
+  {
+    "valid": true,
+    "id": "eaa54f1a49b18c38",
+    "type": "function",
+    "z": "Y5op07n2i7uAgvsI",
+    "name": "Add to selected ",
+    "func": "let selectedRows = flow.get(\"selected\") || [{}];\nlet selectedRow = msg.payload;\n\n\nselectedRows.unshift(selectedRow);\n\n// converting array to set and then again to array to remove duplicates\n\nconst uniqueArray = selectedRows.filter((value, index) => {\n  const _value = JSON.stringify(value);\n  return index === selectedRows.findIndex(obj => {\n    return JSON.stringify(obj) === _value;\n  });\n});\n\nflow.set(\"selected\",uniqueArray); \n\nmsg.payload = uniqueArray;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 645,
+    "y": 150,
+    "wires": [
+      [
+        "1c386da21ca245db"
+      ]
+    ],
+    "color": "#619259",
+    "darkColor": "#4F7C48",
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "194f23774851a4fa",
+    "type": "ui_button",
+    "z": "Y5op07n2i7uAgvsI",
+    "name": "",
+    "group": "0103ad03728e13e1",
+    "order": 3,
+    "width": "4",
+    "height": "1",
+    "passthru": false,
+    "label": "Send email ",
+    "tooltip": "",
+    "color": "#fff",
+    "bgcolor": "",
+    "className": "",
+    "icon": "",
+    "payload": "",
+    "payloadType": "str",
+    "topic": "topic",
+    "topicType": "msg",
+    "x": 645,
+    "y": 330,
+    "wires": [
+      [
+        "a26cf9f337afd927"
+      ]
+    ],
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "fdf86912e8607bf2",
+    "type": "switch",
+    "z": "Y5op07n2i7uAgvsI",
+    "name": "Loop through all orders",
+    "property": "index",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "lt",
+        "v": "length",
+        "vt": "msg"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 1,
+    "x": 960,
+    "y": 330,
+    "wires": [
+      [
+        "8af1dcc2fb9cf9d7"
+      ]
+    ],
+    "color": "#6F7F99",
+    "darkColor": "#526788",
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "8af1dcc2fb9cf9d7",
+    "type": "function",
+    "z": "Y5op07n2i7uAgvsI",
+    "name": "Mailing list loop",
+    "func": "let currentRow = flow.get(\"selected\") || [{}];\nmsg.to = currentRow[msg.index].email;\nmsg.payload = \"Your order for \" + currentRow[msg.index].name;\nmsg.index++;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 975,
+    "y": 240,
+    "wires": [
+      [
+        "976527f8fff5df4c",
+        "fdf86912e8607bf2"
+      ]
+    ],
+    "color": "#AE9554",
+    "darkColor": "#9E8647",
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "a26cf9f337afd927",
+    "type": "function",
+    "z": "Y5op07n2i7uAgvsI",
+    "name": "Mailing List initialisation",
+    "func": "msg.index = 0;\nmsg.length = flow.get(\"selected\").length;\n//console.log(flow.get(\"selected\"));\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 630,
+    "y": 435,
+    "wires": [
+      [
+        "8af1dcc2fb9cf9d7"
+      ]
+    ],
+    "color": "#6F7F99",
+    "darkColor": "#526788",
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "3b6d391fd7672d3d",
+    "type": "function",
+    "z": "Y5op07n2i7uAgvsI",
+    "name": "Remove Selected Row",
+    "func": "const deleteRow = msg.payload;\nlet selectedRows = flow.get(\"selected\") || [{}];\n//delete selected row on click\nselectedRows = selectedRows.filter(function(item) {\n    return item.id !== deleteRow.id\n})\nflow.set(\"selected\",selectedRows);\nmsg.payload = selectedRows;\nmsg.dltd = selectedRows;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 960,
+    "y": 150,
+    "wires": [
+      [
+        "1c386da21ca245db"
+      ]
+    ],
+    "color": "#674C80",
+    "darkColor": "#553C6B",
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "d13791e593a0e3b1",
+    "type": "ui_template",
+    "z": "Y5op07n2i7uAgvsI",
+    "group": "98b7f3a79909c91e",
+    "name": "",
+    "order": 2,
+    "width": 0,
+    "height": 0,
+    "format": "<style>\n#Orders_Default_cards{\n    display:flex;\n    flex-direction:column-reverse;\n}\n</style>",
+    "storeOutMessages": true,
+    "fwdInMessages": true,
+    "resendOnRefresh": true,
+    "templateScope": "local",
+    "className": "",
+    "x": 250,
+    "y": 0,
+    "wires": [
+      [
+        "f97980d9f32d9c78"
+      ]
+    ],
+    "color": "#adadad",
+    "darkColor": "#808080",
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "978095416ea629e0",
+    "type": "bot-info",
+    "z": "Y5op07n2i7uAgvsI",
+    "name": "Shopify Automation",
+    "title": "",
+    "description": "Send emails to from shopify database using a dashboard.",
+    "created": "July 20, 2022",
+    "timestamp": 1658323404123,
+    "compatibility": [
+      {
+        "label": "Maya Cloud",
+        "value": "cloud"
+      }
+    ],
+    "developer": "dushyant@mayalabs.io",
+    "previewMedia": "",
+    "version": "1.0.1",
+    "x": 375,
+    "y": 90,
+    "wires": [],
+    "color": "#6F7F99",
+    "darkColor": "#526788",
+    "module": "maya-red-bot-utils"
+  },
+  {
+    "id": "Y5op07n2i7uAgvsI",
+    "type": "tab",
+    "label": "Flow 1",
+    "disabled": false,
+    "info": "",
+    "in": [],
+    "out": [],
+    "changed": false,
+    "module": null,
+    "version": null
+  }
+]
