@@ -1,0 +1,437 @@
+[
+  {
+    "valid": true,
+    "id": "941467e16c923173",
+    "type": "snowflakeSQLConfig",
+    "name": "",
+    "account": "sx61379.ap-south-1",
+    "accountnameFieldType": "str",
+    "username": "shubdotroot",
+    "FieldType": "str",
+    "password": "Shubham@101",
+    "passwordFieldType": "str",
+    "privateKey": "",
+    "privateKeyFieldType": "str",
+    "privateKeyPass": "",
+    "privateKeyPassFieldType": "str",
+    "warehouse": "COMPUTE_WH",
+    "warehouseFieldType": "str",
+    "schema": "TPCH_SF1",
+    "schemaFieldType": "str",
+    "role": "ACCOUNTADMIN",
+    "roleFieldType": "str",
+    "database": "SNOWFLAKE_SAMPLE_DATA",
+    "databaseFieldType": "str",
+    "module": "@ghmnestor/node-red-contrib-snowflakedw",
+    "version": "1.0.3"
+  },
+  {
+    "valid": true,
+    "id": "14d6fd75eadb9edd",
+    "type": "ui_tab",
+    "name": "Home",
+    "icon": "dashboard",
+    "disabled": false,
+    "hidden": false,
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "5fcaf895e58f7649",
+    "type": "ui_base",
+    "theme": {
+      "name": "theme-light",
+      "lightTheme": {
+        "default": "#0094CE",
+        "baseColor": "#0094CE",
+        "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+        "edited": true,
+        "reset": false
+      },
+      "darkTheme": {
+        "default": "#097479",
+        "baseColor": "#097479",
+        "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+        "edited": false
+      },
+      "customTheme": {
+        "name": "Untitled Theme 1",
+        "default": "#4B7930",
+        "baseColor": "#4B7930",
+        "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+      },
+      "themeState": {
+        "base-color": {
+          "default": "#0094CE",
+          "value": "#0094CE",
+          "edited": false
+        },
+        "page-titlebar-backgroundColor": {
+          "value": "#0094CE",
+          "edited": false
+        },
+        "page-backgroundColor": {
+          "value": "#fafafa",
+          "edited": false
+        },
+        "page-sidebar-backgroundColor": {
+          "value": "#ffffff",
+          "edited": false
+        },
+        "group-textColor": {
+          "value": "#1bbfff",
+          "edited": false
+        },
+        "group-borderColor": {
+          "value": "#ffffff",
+          "edited": false
+        },
+        "group-backgroundColor": {
+          "value": "#ffffff",
+          "edited": false
+        },
+        "widget-textColor": {
+          "value": "#111111",
+          "edited": false
+        },
+        "widget-backgroundColor": {
+          "value": "#0094ce",
+          "edited": false
+        },
+        "widget-borderColor": {
+          "value": "#ffffff",
+          "edited": false
+        },
+        "base-font": {
+          "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+        }
+      },
+      "angularTheme": {
+        "primary": "indigo",
+        "accents": "blue",
+        "warn": "red",
+        "background": "grey",
+        "palette": "light"
+      }
+    },
+    "site": {
+      "name": "Node-RED Dashboard",
+      "hideToolbar": "false",
+      "allowSwipe": "false",
+      "lockMenu": "false",
+      "allowTempTheme": "true",
+      "dateFormat": "DD/MM/YYYY",
+      "sizes": {
+        "sx": 48,
+        "sy": 48,
+        "gx": 6,
+        "gy": 6,
+        "cx": 6,
+        "cy": 6,
+        "px": 0,
+        "py": 0
+      }
+    },
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "730d05afa78e84f7",
+    "type": "ui_group",
+    "name": "Default",
+    "tab": "14d6fd75eadb9edd",
+    "order": 1,
+    "disp": false,
+    "width": "11",
+    "collapse": false,
+    "className": "",
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "3266f6201dcd88e2",
+    "type": "snowflakeSQL",
+    "z": "3cefea13ed5c7e51",
+    "name": "",
+    "query": "SELECT\nl_returnflag,\nl_linestatus,\nsum(l_quantity) as sum_qty,\nsum(l_extendedprice) as sum_base_price,\nsum(l_extendedprice * (1-l_discount)) \n  as sum_disc_price,\nsum(l_extendedprice * (1-l_discount) * \n  (1+l_tax)) as sum_charge,\navg(l_quantity) as avg_qty,\navg(l_extendedprice) as avg_price,\navg(l_discount) as avg_disc,\ncount(*) as count_order\nFROM\nlineitem\nWHERE\nl_shipdate <= dateadd(day, -90, to_date('1998-12-01'))\nGROUP BY\nl_returnflag,\nl_linestatus\nORDER BY\nl_returnflag,\nl_linestatus;",
+    "snowflakeSQLConfig": "941467e16c923173",
+    "split": false,
+    "rowsPerMsg": 1,
+    "outputs": 1,
+    "x": 350,
+    "y": 160,
+    "wires": [
+      [
+        "2a62bb62.f0f7cc"
+      ]
+    ],
+    "color": "#619259",
+    "darkColor": "#4F7C48",
+    "module": "@ghmnestor/node-red-contrib-snowflakedw",
+    "version": "1.0.3"
+  },
+  {
+    "valid": true,
+    "id": "2a62bb62.f0f7cc",
+    "type": "template",
+    "z": "3cefea13ed5c7e51",
+    "name": "",
+    "field": "payload",
+    "fieldType": "msg",
+    "format": "handlebars",
+    "syntax": "mustache",
+    "template": "\n<style>\ntable, th, td {\n  border: 1px solid black;\n}\n</style>\n\nGreetings,<br><br>\n\nPlease find the following sales and returns reports for the quarter passed. \n<br>\n<br>\n<br>\n<h4>Quarterly Reporting</h4>\n\n<table id=\"table\" border=\"1\">\n     <tr>\n    <th>Returned</th>\n    <th>Line Status</th>\n    <th>Quantity</th>\n </tr>\n    {{#payload}}\n  <tr>\n    <td>{{L_RETURNFLAG}}</td>\n    <td>{{L_LINESTATUS}}</td>\n    <td>{{SUM_QTY}}</td>\n  </tr>\n    {{/payload}} \n</table>\n<br>\nRevert back for any questions.<br><br>\n\nThank you,\n<br>\nShubham\n\n",
+    "output": "str",
+    "x": 540,
+    "y": 160,
+    "wires": [
+      [
+        "5a9d25b6e52a245d"
+      ]
+    ],
+    "color": "#9F4E2A",
+    "darkColor": "#884324",
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "662e84ea.e38f1c",
+    "type": "debug",
+    "z": "3cefea13ed5c7e51",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 870,
+    "y": 160,
+    "wires": [],
+    "color": "#619259",
+    "darkColor": "#4F7C48",
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "5a9d25b6e52a245d",
+    "type": "ui_template",
+    "z": "3cefea13ed5c7e51",
+    "group": "730d05afa78e84f7",
+    "name": "",
+    "order": 0,
+    "width": "6",
+    "height": "8",
+    "format": "<div ng-bind-html=\"msg.payload\"></div>",
+    "storeOutMessages": true,
+    "fwdInMessages": true,
+    "resendOnRefresh": true,
+    "templateScope": "local",
+    "className": "",
+    "x": 700,
+    "y": 160,
+    "wires": [
+      [
+        "662e84ea.e38f1c"
+      ]
+    ],
+    "color": "#619259",
+    "darkColor": "#4F7C48",
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "02f730b93502e26b",
+    "type": "ui_toast",
+    "z": "3cefea13ed5c7e51",
+    "position": "top right",
+    "displayTime": "3",
+    "highlight": "",
+    "sendall": false,
+    "outputs": 0,
+    "ok": "OK",
+    "cancel": "",
+    "raw": false,
+    "className": "",
+    "topic": "Notification",
+    "name": "",
+    "x": 1010,
+    "y": 240,
+    "wires": [],
+    "color": "#674C80",
+    "darkColor": "#553C6B",
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "1a12bf4153845a4e",
+    "type": "ui_button",
+    "z": "3cefea13ed5c7e51",
+    "name": "Send Email Button",
+    "group": "730d05afa78e84f7",
+    "order": 2,
+    "width": "3",
+    "height": "1",
+    "passthru": false,
+    "label": "Send Email",
+    "tooltip": "",
+    "color": "#fff",
+    "bgcolor": "",
+    "className": "",
+    "icon": "",
+    "payload": "Sending Email",
+    "payloadType": "str",
+    "topic": "Notification",
+    "topicType": "str",
+    "x": 340,
+    "y": 240,
+    "wires": [
+      [
+        "3c8d9acf3cac1703"
+      ]
+    ],
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "3c8d9acf3cac1703",
+    "type": "function",
+    "z": "3cefea13ed5c7e51",
+    "name": "",
+    "func": "var toEmail = msg.email\nvar fromEmail = \"shubham@emailemail.com\"\n\nvar payload = {\n   \"from\":{\n      \"name\" : \"Shubham Mishra\",\n      \"email\": fromEmail\n   },\n   \"personalizations\":[\n      {\n         \"to\":[\n            {\n               \"email\": \"shareholders@emailemail.com\"\n            },\n         ],\n   }\n   ],\n   \"content\": [{\"type\": \"text/html\", \"value\": flow.get('email')}]\n}\n\nmsg.payload = payload\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 580,
+    "y": 240,
+    "wires": [
+      [
+        "5952ca50cd89d1e4"
+      ]
+    ],
+    "color": "#619259",
+    "darkColor": "#4F7C48",
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "5952ca50cd89d1e4",
+    "type": "http request",
+    "z": "3cefea13ed5c7e51",
+    "name": "",
+    "method": "POST",
+    "ret": "txt",
+    "paytoqs": "ignore",
+    "url": "https://api.sendgrid.com/v3/mail/send",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "authType": "",
+    "x": 790,
+    "y": 240,
+    "wires": [
+      [
+        "02f730b93502e26b"
+      ]
+    ],
+    "color": "#6F7F99",
+    "darkColor": "#526788",
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "5d81c8451684205d",
+    "type": "ui_button",
+    "z": "3cefea13ed5c7e51",
+    "name": "",
+    "group": "730d05afa78e84f7",
+    "order": 2,
+    "width": "3",
+    "height": "1",
+    "passthru": false,
+    "label": "Get Data",
+    "tooltip": "",
+    "color": "#fff",
+    "bgcolor": "",
+    "className": "",
+    "icon": "",
+    "payload": "",
+    "payloadType": "str",
+    "topic": "topic",
+    "topicType": "msg",
+    "x": 165,
+    "y": 165,
+    "wires": [
+      [
+        "3266f6201dcd88e2"
+      ]
+    ],
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "1360774d684877e6",
+    "type": "bot-info",
+    "z": "3cefea13ed5c7e51",
+    "name": "Automation Information",
+    "title": "MIS to Email Example",
+    "description": "This simple automation is query from snowflake database and construct and email from the queried report and send over to your email group.",
+    "created": "July 20, 2022",
+    "timestamp": 1658325357123,
+    "compatibility": [
+      {
+        "label": "MacOS",
+        "value": "macos"
+      },
+      {
+        "label": "Windows",
+        "value": "windows"
+      },
+      {
+        "label": "Linux",
+        "value": "linux"
+      },
+      {
+        "label": "Maya Cloud",
+        "value": "cloud"
+      }
+    ],
+    "developer": "shubham@mayahq.com",
+    "previewMedia": "",
+    "version": "1.0.1",
+    "x": 165,
+    "y": 75,
+    "wires": [],
+    "color": "#adadad",
+    "darkColor": "#808080",
+    "module": "maya-red-bot-utils"
+  },
+  {
+    "id": "3cefea13ed5c7e51",
+    "type": "tab",
+    "label": "Flow 1",
+    "disabled": false,
+    "info": "",
+    "env": [],
+    "changed": false,
+    "in": [],
+    "out": [],
+    "module": null,
+    "version": null
+  }
+]
