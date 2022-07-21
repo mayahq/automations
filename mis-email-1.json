@@ -155,7 +155,7 @@
     "id": "3266f6201dcd88e2",
     "type": "snowflakeSQL",
     "z": "3cefea13ed5c7e51",
-    "name": "",
+    "name": "SnowflakeDB",
     "query": "SELECT\nl_returnflag,\nl_linestatus,\nsum(l_quantity) as sum_qty,\nsum(l_extendedprice) as sum_base_price,\nsum(l_extendedprice * (1-l_discount)) \n  as sum_disc_price,\nsum(l_extendedprice * (1-l_discount) * \n  (1+l_tax)) as sum_charge,\navg(l_quantity) as avg_qty,\navg(l_extendedprice) as avg_price,\navg(l_discount) as avg_disc,\ncount(*) as count_order\nFROM\nlineitem\nWHERE\nl_shipdate <= dateadd(day, -90, to_date('1998-12-01'))\nGROUP BY\nl_returnflag,\nl_linestatus\nORDER BY\nl_returnflag,\nl_linestatus;",
     "snowflakeSQLConfig": "941467e16c923173",
     "split": false,
@@ -168,8 +168,6 @@
         "2a62bb62.f0f7cc"
       ]
     ],
-    "color": "#619259",
-    "darkColor": "#4F7C48",
     "module": "@ghmnestor/node-red-contrib-snowflakedw",
     "version": "1.0.3"
   },
@@ -192,8 +190,6 @@
         "5a9d25b6e52a245d"
       ]
     ],
-    "color": "#9F4E2A",
-    "darkColor": "#884324",
     "module": "node-red",
     "version": "2.0.6-git"
   },
@@ -214,8 +210,6 @@
     "x": 870,
     "y": 160,
     "wires": [],
-    "color": "#619259",
-    "darkColor": "#4F7C48",
     "module": "node-red",
     "version": "2.0.6-git"
   },
@@ -242,8 +236,6 @@
         "662e84ea.e38f1c"
       ]
     ],
-    "color": "#619259",
-    "darkColor": "#4F7C48",
     "module": "node-red-dashboard",
     "version": "3.1.7"
   },
@@ -266,8 +258,6 @@
     "x": 1010,
     "y": 240,
     "wires": [],
-    "color": "#674C80",
-    "darkColor": "#553C6B",
     "module": "node-red-dashboard",
     "version": "3.1.7"
   },
@@ -321,8 +311,6 @@
         "5952ca50cd89d1e4"
       ]
     ],
-    "color": "#619259",
-    "darkColor": "#4F7C48",
     "module": "node-red",
     "version": "2.0.6-git"
   },
@@ -347,8 +335,6 @@
         "02f730b93502e26b"
       ]
     ],
-    "color": "#6F7F99",
-    "darkColor": "#526788",
     "module": "node-red",
     "version": "2.0.6-git"
   },
@@ -390,7 +376,7 @@
     "z": "3cefea13ed5c7e51",
     "name": "Automation Information",
     "title": "MIS to Email Example",
-    "description": "This simple automation is query from snowflake database and construct and email from the queried report and send over to your email group.",
+    "description": "This simple automation is query from snowflake database and construct and email from the queried report and send over to your email group.\n\nInstall Instructions:\n\n1. Double click on the Snowflake SQL Node\n2. Click on the Pencil icon against the Snowflake Config\n3. Put the credential information of your Snowflake DB in the config panel that opens\n4. Click 'Add' button to update the credentials\n5. When you are back to Snowflake DB config panel update your SQL query in the input panel\n6. Press Done and Deploy the flow to save.\n\n7. You'd want to change the table structure you send in email, for that double click on template node\n8. Update the columns headers you want to show on email in <th> tags and actual coressponding column names from Snowflake on <td> tags to show the output.\n9. Deploy and open the Dashboard to view changes.",
     "created": "July 20, 2022",
     "timestamp": 1658325357123,
     "compatibility": [
@@ -417,8 +403,6 @@
     "x": 165,
     "y": 75,
     "wires": [],
-    "color": "#adadad",
-    "darkColor": "#808080",
     "module": "maya-red-bot-utils"
   },
   {
