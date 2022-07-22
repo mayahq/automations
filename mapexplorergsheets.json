@@ -1,0 +1,428 @@
+[
+  {
+    "valid": true,
+    "id": "88857cda81c48978",
+    "type": "ui_tab",
+    "name": "Home",
+    "icon": "dashboard",
+    "disabled": false,
+    "hidden": false,
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "1caf29d5d7365abd",
+    "type": "ui_base",
+    "theme": {
+      "name": "theme-light",
+      "lightTheme": {
+        "default": "#0094CE",
+        "baseColor": "#0094CE",
+        "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+        "edited": false
+      },
+      "darkTheme": {
+        "default": "#097479",
+        "baseColor": "#097479",
+        "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+        "edited": false
+      },
+      "customTheme": {
+        "name": "Untitled Theme 1",
+        "default": "#4B7930",
+        "baseColor": "#4B7930",
+        "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+      },
+      "themeState": {
+        "base-color": {
+          "default": "#0094CE",
+          "value": "#0094CE",
+          "edited": false
+        },
+        "page-titlebar-backgroundColor": {
+          "value": "#0094CE",
+          "edited": false
+        },
+        "page-backgroundColor": {
+          "value": "#fafafa",
+          "edited": false
+        },
+        "page-sidebar-backgroundColor": {
+          "value": "#ffffff",
+          "edited": false
+        },
+        "group-textColor": {
+          "value": "#1bbfff",
+          "edited": false
+        },
+        "group-borderColor": {
+          "value": "#ffffff",
+          "edited": false
+        },
+        "group-backgroundColor": {
+          "value": "#ffffff",
+          "edited": false
+        },
+        "widget-textColor": {
+          "value": "#111111",
+          "edited": false
+        },
+        "widget-backgroundColor": {
+          "value": "#0094ce",
+          "edited": false
+        },
+        "widget-borderColor": {
+          "value": "#ffffff",
+          "edited": false
+        },
+        "base-font": {
+          "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+        }
+      },
+      "angularTheme": {
+        "primary": "indigo",
+        "accents": "blue",
+        "warn": "red",
+        "background": "grey",
+        "palette": "light"
+      }
+    },
+    "site": {
+      "name": "Node-RED Dashboard",
+      "hideToolbar": "false",
+      "allowSwipe": "false",
+      "lockMenu": "false",
+      "allowTempTheme": "true",
+      "dateFormat": "DD/MM/YYYY",
+      "sizes": {
+        "sx": 48,
+        "sy": 48,
+        "gx": 6,
+        "gy": 6,
+        "cx": 6,
+        "cy": 6,
+        "px": 0,
+        "py": 0
+      }
+    },
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "351a5fdd4ce44fae",
+    "type": "ui_group",
+    "name": "Default",
+    "tab": "88857cda81c48978",
+    "order": 1,
+    "disp": true,
+    "width": "12",
+    "collapse": false,
+    "className": "",
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "e37a144d2d86a482",
+    "type": "ui_group",
+    "name": "Table",
+    "tab": "88857cda81c48978",
+    "order": 2,
+    "disp": true,
+    "width": "6",
+    "collapse": false,
+    "className": "",
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "7491766eb14ff73f",
+    "type": "worldmap",
+    "z": "d0vruHQjntGWUQUd",
+    "name": "",
+    "lat": "35.65146",
+    "lon": "-82.62792",
+    "zoom": "16",
+    "layer": "OSMG",
+    "cluster": "",
+    "maxage": "",
+    "usermenu": "show",
+    "layers": "show",
+    "panit": "true",
+    "panlock": "false",
+    "zoomlock": "false",
+    "hiderightclick": "false",
+    "coords": "none",
+    "showgrid": "false",
+    "allowFileDrop": "false",
+    "path": "/worldmap",
+    "overlist": "DR,CO,RA,DN,BU,RW,HM",
+    "maplist": "OSMG,OSMC,EsriC,EsriS,EsriT,EsriDG,UKOS",
+    "mapname": "",
+    "mapurl": "",
+    "mapopt": "",
+    "mapwms": false,
+    "x": 705,
+    "y": 90,
+    "wires": [],
+    "module": "node-red-contrib-web-worldmap",
+    "version": "2.28.3"
+  },
+  {
+    "valid": true,
+    "id": "f98f5bd442ad8476",
+    "type": "ui_template",
+    "z": "d0vruHQjntGWUQUd",
+    "group": "351a5fdd4ce44fae",
+    "name": "",
+    "order": 0,
+    "width": 0,
+    "height": 0,
+    "format": "<iframe height=\"500px\" src=\"https://rt-62dade4070cbb61906e179ff.mayahq.dev.mayalabs.io/worldmap/\" title=\"Worldmap\"></iframe>\n",
+    "storeOutMessages": true,
+    "fwdInMessages": true,
+    "resendOnRefresh": true,
+    "templateScope": "local",
+    "className": "",
+    "x": 405,
+    "y": 405,
+    "wires": [
+      []
+    ],
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "c8b77fc679a68f3f",
+    "type": "ui_table",
+    "z": "d0vruHQjntGWUQUd",
+    "group": "e37a144d2d86a482",
+    "name": "",
+    "order": 1,
+    "width": "6",
+    "height": "8",
+    "columns": [
+      {
+        "field": "name",
+        "title": "name",
+        "width": "",
+        "align": "left",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "latitude",
+        "title": "latitude",
+        "width": "",
+        "align": "left",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      },
+      {
+        "field": "longitude",
+        "title": "longitude",
+        "width": "",
+        "align": "left",
+        "formatter": "plaintext",
+        "formatterParams": {
+          "target": "_blank"
+        }
+      }
+    ],
+    "outputs": 1,
+    "cts": true,
+    "x": 720,
+    "y": 300,
+    "wires": [
+      [
+        "c59585b0c744bf27",
+        "c59585b0c744bf27",
+        "c59585b0c744bf27"
+      ]
+    ],
+    "module": "node-red-node-ui-table",
+    "version": "0.3.12"
+  },
+  {
+    "valid": true,
+    "id": "b00366601a291874",
+    "type": "gsheet-get",
+    "z": "d0vruHQjntGWUQUd",
+    "name": "Fetch from Gsheets",
+    "isProfileConfigNode": false,
+    "url": "sheetlink",
+    "payloadTypeurl": "flow",
+    "gridRange": "{}",
+    "payloadTypegridRange": "json",
+    "includeGridData": "true",
+    "payloadTypeincludeGridData": "bool",
+    "x": 255,
+    "y": 255,
+    "wires": [
+      [
+        "bcc853d3204cc062"
+      ]
+    ],
+    "module": "maya-red-gsheet",
+    "version": "0.0.1"
+  },
+  {
+    "valid": true,
+    "id": "ca8d2e6ee745f19b",
+    "type": "ui_button",
+    "z": "d0vruHQjntGWUQUd",
+    "name": "",
+    "group": "e37a144d2d86a482",
+    "order": 1,
+    "width": 0,
+    "height": 0,
+    "passthru": false,
+    "label": "REFRESH",
+    "tooltip": "",
+    "color": "#fff",
+    "bgcolor": "",
+    "className": "",
+    "icon": "",
+    "payload": "",
+    "payloadType": "str",
+    "topic": "topic",
+    "topicType": "msg",
+    "x": 120,
+    "y": 195,
+    "wires": [
+      [
+        "b00366601a291874"
+      ]
+    ],
+    "module": "node-red-dashboard",
+    "version": "3.1.7"
+  },
+  {
+    "valid": true,
+    "id": "bcc853d3204cc062",
+    "type": "function",
+    "z": "d0vruHQjntGWUQUd",
+    "name": "",
+    "func": "function filterOutStuff(item){\n    var payload = item.values;\n    return payload\n}\n\nvar sheet = msg.payload.sheets[0];\n\nvar item = sheet.data[0].rowData[0].values;\n\nresults = sheet.data[0].rowData.map(filterOutStuff)\n\nheaders = []\nfunction createItems(item,i){\n    if(i > 0){\n        itemReturn = {};\n        for (let i = 0; i < headers.length; i++) {\n          itemReturn[headers[i]] = item[i].formattedValue;\n        }\n        return itemReturn;\n    } else {\n        headers = item.map(function(header) {\n              return header.formattedValue\n        })\n    }\n}\n\nresultsnew = results.map(createItems)\nmsg.payload = resultsnew.slice(1)\nmsg.headers = headers\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 480,
+    "y": 315,
+    "wires": [
+      [
+        "c8b77fc679a68f3f"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "c59585b0c744bf27",
+    "type": "change",
+    "z": "d0vruHQjntGWUQUd",
+    "name": "",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload.lat",
+        "pt": "msg",
+        "to": "payload.latitude",
+        "tot": "msg"
+      },
+      {
+        "t": "set",
+        "p": "payload.long",
+        "pt": "msg",
+        "to": "payload.longitude",
+        "tot": "msg"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 855,
+    "y": 225,
+    "wires": [
+      [
+        "7491766eb14ff73f"
+      ]
+    ],
+    "module": "node-red",
+    "version": "2.0.6-git"
+  },
+  {
+    "valid": true,
+    "id": "e8f5134bfdc9029c",
+    "type": "bot-info",
+    "z": "d0vruHQjntGWUQUd",
+    "name": "Bot Details",
+    "title": "Map Explorer linked to Gsheets DB",
+    "description": "Link to a google sheets database with name, latitude, and longitude in the column names and visualize using a handy map.",
+    "created": "July 22, 2022",
+    "timestamp": 1658513553880,
+    "compatibility": [
+      {
+        "label": "Maya Cloud",
+        "value": "cloud"
+      }
+    ],
+    "developer": "sibesh@mayalabs.io",
+    "previewMedia": "",
+    "version": "1.0.1",
+    "x": 225,
+    "y": 375,
+    "wires": [],
+    "module": "maya-red-bot-utils"
+  },
+  {
+    "valid": true,
+    "id": "430c4d4415b037b8",
+    "type": "bot-config",
+    "z": "d0vruHQjntGWUQUd",
+    "name": "",
+    "rules": [
+      {
+        "t": "set",
+        "p": "sheetlink",
+        "pt": "flow",
+        "varName": "GSheets Url",
+        "varDesc": "Map Explorer linked to Gsheets Database",
+        "reqd": true,
+        "exportVar": true,
+        "to": "https://docs.google.com/spreadsheets/d/1NEK-FM6k23Ia3nASwP2iLmPmHx8ZIHC7CUM0dAmTzP0/edit#gid=0",
+        "tot": "str"
+      }
+    ],
+    "x": 255,
+    "y": 540,
+    "wires": [],
+    "module": "maya-red-bot-utils",
+    "version": "1.0.1"
+  },
+  {
+    "id": "d0vruHQjntGWUQUd",
+    "type": "tab",
+    "label": "Flow 1",
+    "disabled": false,
+    "info": "",
+    "in": [],
+    "out": [],
+    "changed": false,
+    "module": null,
+    "version": null
+  }
+]
