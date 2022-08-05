@@ -7,6 +7,7 @@
     "payloadTypebaseId": "str",
     "tableName": "Table 1",
     "payloadTypetableName": "str",
+    "credentials": {},
     "module": "maya-red-airtable",
     "version": "1.0.0"
   },
@@ -14,7 +15,7 @@
     "valid": true,
     "id": "fe977265b3218131",
     "type": "ui_tab",
-    "name": "Home1",
+    "name": "Dashboard",
     "icon": "dashboard",
     "disabled": false,
     "hidden": false,
@@ -125,7 +126,7 @@
     "valid": true,
     "id": "4133e710a2d44000",
     "type": "ui_group",
-    "name": "Default",
+    "name": "Entries",
     "tab": "fe977265b3218131",
     "order": 1,
     "disp": true,
@@ -139,11 +140,25 @@
     "valid": true,
     "id": "b59b603c225770a3",
     "type": "ui_group",
-    "name": "Default1",
+    "name": "Edit",
     "tab": "fe977265b3218131",
     "order": 2,
     "disp": true,
     "width": "6",
+    "collapse": false,
+    "className": "",
+    "module": "@mayahq/maya-red-dashboard",
+    "version": "1.0.8"
+  },
+  {
+    "valid": true,
+    "id": "5981bdfe360dbbc0",
+    "type": "ui_group",
+    "name": "Default",
+    "tab": "fe977265b3218131",
+    "order": 3,
+    "disp": true,
+    "width": "12",
     "collapse": false,
     "className": "",
     "module": "@mayahq/maya-red-dashboard",
@@ -175,66 +190,10 @@
         "e7ff632987bc6078"
       ]
     ],
-    "color": "#9F4E2A",
-    "darkColor": "#884324",
-    "module": "maya-red-airtable",
-    "version": "1.0.0"
-  },
-  {
-    "valid": true,
-    "id": "b1a8e78dcbbdf386",
-    "type": "inject",
-    "z": "MQolYJRYhIf2EEGL",
-    "name": "",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "",
-    "payloadType": "date",
-    "x": 495,
-    "y": 105,
-    "wires": [
-      [
-        "abaf0ab04a0facfd"
-      ]
-    ],
     "color": "#619259",
     "darkColor": "#4F7C48",
-    "module": "node-red",
-    "version": "2.0.6-git"
-  },
-  {
-    "valid": true,
-    "id": "8a8dc51418ac3de6",
-    "type": "debug",
-    "z": "MQolYJRYhIf2EEGL",
-    "name": "",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "true",
-    "targetType": "full",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 480,
-    "y": 555,
-    "wires": [],
-    "color": "#9F4E2A",
-    "darkColor": "#884324",
-    "module": "node-red",
-    "version": "2.0.6-git"
+    "module": "maya-red-airtable",
+    "version": "1.0.0"
   },
   {
     "valid": true,
@@ -243,55 +202,23 @@
     "z": "MQolYJRYhIf2EEGL",
     "group": "4133e710a2d44000",
     "name": "Table",
-    "order": 0,
-    "width": "9",
-    "height": "6",
+    "order": 5,
+    "width": "20",
+    "height": "9",
     "columns": [],
     "outputs": 1,
     "cts": true,
-    "x": 480,
-    "y": 450,
+    "x": 690,
+    "y": 270,
     "wires": [
       [
-        "20313044606d8a4e",
-        "c51033e2c5bb2f1e"
+        "20313044606d8a4e"
       ]
     ],
     "color": "#674C80",
     "darkColor": "#553C6B",
     "module": "@mayahq/maya-red-node-ui-table",
     "version": "0.3.13"
-  },
-  {
-    "valid": true,
-    "id": "b44e214edb5d9f30",
-    "type": "ui_button",
-    "z": "MQolYJRYhIf2EEGL",
-    "name": "",
-    "group": "4133e710a2d44000",
-    "order": 1,
-    "width": "5",
-    "height": "1",
-    "passthru": false,
-    "label": "Fetch",
-    "tooltip": "",
-    "color": "#adadad",
-    "bgcolor": "",
-    "className": "",
-    "icon": "",
-    "payload": "5",
-    "payloadType": "str",
-    "topic": "",
-    "topicType": "str",
-    "x": 315,
-    "y": 195,
-    "wires": [
-      [
-        "66413f0beb85387f"
-      ]
-    ],
-    "module": "@mayahq/maya-red-dashboard",
-    "version": "1.0.8"
   },
   {
     "valid": true,
@@ -314,15 +241,14 @@
     "to": "",
     "reg": false,
     "x": 480,
-    "y": 360,
+    "y": 330,
     "wires": [
       [
-        "563756866fd1d29b",
-        "8a8dc51418ac3de6"
+        "563756866fd1d29b"
       ]
     ],
-    "color": "#674C80",
-    "darkColor": "#553C6B",
+    "color": "#6F7F99",
+    "darkColor": "#526788",
     "module": "node-red",
     "version": "2.0.6-git"
   },
@@ -335,9 +261,9 @@
     "label": "Query",
     "tooltip": "",
     "group": "4133e710a2d44000",
-    "order": 2,
-    "width": "8",
-    "height": "1",
+    "order": 1,
+    "width": 8,
+    "height": 1,
     "passthru": false,
     "mode": "text",
     "delay": "0",
@@ -345,15 +271,15 @@
     "sendOnBlur": false,
     "className": "",
     "topicType": "msg",
-    "x": 540,
+    "x": 255,
     "y": 180,
     "wires": [
       [
         "66413f0beb85387f"
       ]
     ],
-    "color": "#619259",
-    "darkColor": "#4F7C48",
+    "color": "#996F6F",
+    "darkColor": "#905454",
     "module": "@mayahq/maya-red-dashboard",
     "version": "1.0.8"
   },
@@ -364,10 +290,10 @@
     "z": "MQolYJRYhIf2EEGL",
     "name": "",
     "label": "",
-    "group": "4133e710a2d44000",
-    "order": 3,
-    "width": "10",
-    "height": "19",
+    "group": "b59b603c225770a3",
+    "order": 1,
+    "width": 6,
+    "height": "13",
     "options": [
       {
         "label": "First Name",
@@ -398,41 +324,51 @@
     },
     "payload": "",
     "submit": "submit",
-    "cancel": "cancel",
+    "cancel": "",
     "topic": "topic",
     "topicType": "msg",
     "splitLayout": "",
     "className": "",
-    "x": 885,
-    "y": 405,
+    "x": 690,
+    "y": 330,
     "wires": [
       []
     ],
-    "color": "#AE9554",
-    "darkColor": "#9E8647",
+    "color": "#adadad",
+    "darkColor": "#808080",
     "module": "@mayahq/maya-red-dashboard",
     "version": "1.0.8"
   },
   {
     "valid": true,
-    "id": "c51033e2c5bb2f1e",
-    "type": "debug",
+    "id": "b44e214edb5d9f30",
+    "type": "ui_button",
     "z": "MQolYJRYhIf2EEGL",
     "name": "",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "false",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 825,
-    "y": 555,
-    "wires": [],
-    "color": "#9F4E2A",
-    "darkColor": "#884324",
-    "module": "node-red",
-    "version": "2.0.6-git"
+    "group": "4133e710a2d44000",
+    "order": 2,
+    "width": "2",
+    "height": 1,
+    "passthru": false,
+    "label": "Fetch",
+    "tooltip": "",
+    "color": "#adadad",
+    "bgcolor": "",
+    "className": "",
+    "icon": "",
+    "payload": "5",
+    "payloadType": "str",
+    "topic": "",
+    "topicType": "str",
+    "x": 255,
+    "y": 270,
+    "wires": [
+      [
+        "66413f0beb85387f"
+      ]
+    ],
+    "module": "@mayahq/maya-red-dashboard",
+    "version": "1.0.8"
   },
   {
     "id": "MQolYJRYhIf2EEGL",
